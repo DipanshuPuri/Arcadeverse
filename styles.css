@@ -13,7 +13,7 @@ html {
 
 /* General Styles */
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     margin: 0 auto;
     background-color: #111111;
     display: flex;
@@ -26,6 +26,9 @@ body {
 
 .container {
     margin: 0 auto;
+    display:flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .container::-webkit-scrollbar { 
@@ -34,7 +37,7 @@ body {
 
 /* Navigation Bar Styles */
 .navbar {
-    background-color: #111111;
+    background-color: #07080a;
     color: white;
     padding: 20px 0 20px 0;
     margin: 0;
@@ -43,17 +46,20 @@ body {
     width:100%;
     z-index: 1200;
     align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Added shadow for better separation */
 }
 
 .logo {
     max-width: 30%;
-    border: none;
-    outline: none;
-    padding: 0;
-    margin-right: 20px;
-    box-shadow: none;
-    border-image: none;
+    border: none !important;
+    outline: none !important;
+    padding: 0 !important;
+    margin-right: 20px; /* Only margin-right is set, check if this is necessary */
+    box-shadow: none !important;
+    border-image: none !important;
+    vertical-align: top;
 }
+
 
 .navbar .container {
     display: flex;
@@ -100,7 +106,7 @@ body {
 /* Smaller NavBar */
 
 .navbar, .navbar .site-name, .navbar .nav-links a, .navbar .logo {
-    transition: all 0.5s ease-in-out;
+    transition: all 0.25s ease-in-out;
 }
 
 .navbar.shrink {
@@ -127,6 +133,9 @@ body {
     max-width: 20%;
 }
 
+
+
+
 /* Slideshow Container */
 .slideshow-container {
     position: relative;
@@ -144,7 +153,7 @@ body {
 .slideshow img {
     width: 100%;
     display: block;
-    transition: opacity 0.5s ease-in-out; /* Smooth transition for opacity */
+    transition: opacity 0.25s ease-in-out; /* Smooth transition for opacity */
 }
 
 .overlay {
@@ -155,7 +164,7 @@ body {
     height: 100%;
     background-color: black; /* Black background for fade effect */
     opacity: 0;
-    transition: opacity 1s ease-in-out; /* Fade in/out effect for overlay */
+    transition: opacity 0.25s ease-in-out; /* Fade in/out effect for overlay */
     z-index: 1; /* Ensure overlay is above the image */
 }
 
@@ -287,8 +296,8 @@ body {
 
 .game-title {
     display: flex;
-    font-size: 24px;
-    font-weight: bold;
+    font-size: 32px;
+    font-weight: bolder;
     margin: 25px 100px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
@@ -296,10 +305,11 @@ body {
 .game-description {
     display: flex;
     max-width: 100%;
-    font-size: 20px;
+    font-size: 22px;
     margin: 25px 100px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
+
 
 /* Align the content to the right for the second game */
 .align-right {
@@ -312,11 +322,339 @@ body {
     margin: 25px 100px; /* Adjust margin to avoid pushing the content to the left */
 }
 
-/* Footer Styles */
-.footer {
-    background-color: #111111;
-    color: #E0EAF5;
+/* Footer */
+footer {
+    background-color: #07080a;
+    color: #fff;
     text-align: center;
-    padding: 15px 0;
-    width: 100%;
+    padding: 40px 0;
 }
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-logo {
+    max-width: 150px;
+    margin-bottom: 50px;
+}
+
+.footer-links, .social-icons {
+    margin-bottom: 50px;
+}
+
+.footer-links a, .footer-bottom a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 16px;
+}
+
+.footer-links a:hover, .footer-bottom a:hover {
+    text-decoration: underline;
+}
+
+.social-icons a {
+    color: #fff;
+    margin: 0 10px;
+    font-size: 20px;
+}
+
+.social-icons img {
+    width: 42px;
+    height: 42px;
+}
+
+.footer-bottom p {
+    font-size: 12px;
+    margin-top: 20px;
+}
+
+/* Challenges Page Styles */
+.challenges {
+    padding: 40px 0;
+    color: white;
+}
+
+.challenge-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.challenge-item {
+    background-color: #232323;
+    padding: 20px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+}
+
+.challenge-item.complete {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.challenge-item.incomplete {
+    background-color: #B4280E;
+}
+
+.challenge-item .status {
+    font-weight: bold;
+}
+
+/* Blue section below slideshow */
+
+.blue-section {
+    background-color: #1b1c1b;
+    padding: 50px 0;
+}
+
+.content-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1368px;
+    margin: 0 auto;
+}
+
+.image-container img {
+    max-width: 100%;
+    height: auto;
+}
+
+.text-container {
+    text-align: right;
+    max-width: 600px;
+    color: white;
+    margin-left:50px;
+}
+
+.text-container span {
+    font-size: 42px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bolder;
+}
+
+.text-container p {
+    font-size: 18px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.know-more-btn {
+    background-color: #e94e3b;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+}
+
+.know-more-btn:hover {
+    background-color: #cc3a2a;
+}
+
+.purpose {
+    margin-right: 190px;
+}
+
+.unleash {
+    font-weight: bolder;
+    font-size: 24px;
+    margin-right: 100px;
+}
+
+
+/* Support Page */
+
+.support-section {
+    background-color: #232323;
+    text-align: center;
+    color: white;
+    position: relative;
+    margin: 0;
+}
+
+.support-header h1 {
+    font-size: 96px;
+    padding: 100px 100px;
+    position: relative;
+    z-index: 2;
+    margin: 0;
+}
+
+.support-header {
+    position: relative;
+    margin: 0;
+}
+
+.support-header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('file:///C:/Users/ASUS/Desktop/college/Subjects/Sem3/FEE/project/images/support.jpg');
+    background-position: center;
+    opacity: 0.9;
+    z-index: 1;
+    margin: 0;
+}
+
+.contact-section-container {
+    background: #232323;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    z-index: 1000;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.contact-content span {
+    font-size: 48px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bolder;
+}
+
+.contact-content p {
+    font-size: 18px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: lighter;
+} 
+
+.contact-section {
+    background-color: #232323;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    text-align: left;
+    padding: 50px;
+}
+
+.contact-content {
+    padding: 50px 200px 50px 50px;
+}
+
+.contact-button {
+    background-color: #e94e3b;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size:20px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    margin:50px 0 20px 0;
+}
+
+.contact-button:hover {
+    background-color: #cc3a2a;
+}
+
+/* Media Queries */
+
+/* Navbar Styles for Small Screens */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px 0;
+    }
+    .navbar .site-name {
+        font-size: 28px;
+        margin-bottom: 10px;
+    }
+    .navbar .nav-links {
+        flex-direction: column;
+        margin-right: 0;
+    }
+    .navbar .nav-links a {
+        margin: 10px 0;
+        font-size: 18px;
+    }
+    .navbar .logo {
+        max-width: 40%;
+    }
+
+}
+
+/* Navbar Styles for Very Small Screens */
+@media (max-width: 480px) {
+    .navbar {
+        padding: 10px 0; /* Adjust padding for smaller screens */
+    }
+
+    .navbar .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar .site-name,
+    .navbar .subtitle {
+        display: none; /* Hide site name and subtitle on very small screens */
+    }
+
+    .navbar .nav-links {
+        margin: 10px 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Center align nav links */
+    }
+
+    .navbar .nav-links a {
+        font-size: 16px; /* Adjust font size */
+        margin: 5px 0; /* Adjust spacing between links */
+    }
+
+    .navbar .logo {
+        max-width: 40%; /* Adjust logo size */
+    }
+}
+
+/* Game Block Styles for Small Screens */
+@media (max-width: 768px) {
+    .game-block {
+        flex-direction: column;
+        align-items: center;
+        margin: 20px 0;
+    }
+    .game-image, .game-info {
+        width: 100%;
+        text-align: center;
+    }
+    .game-info {
+        align-items: center;
+    }
+}
+
+/* Blue Section Styles for Small Screens */
+@media (max-width: 768px) {
+    .blue-section .content-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .blue-section .text-container {
+        margin-left: 0;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1280px) {
+    img {
+      width: 90%;
+      /* If you want to maintain the aspect ratio, you can add the height as auto */
+      height: auto;
+    }
+  }
+  
