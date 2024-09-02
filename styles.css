@@ -273,7 +273,7 @@ body {
 
 .game-block:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    animation: blink 1s;
+    /* animation: blink 1s; */
 }
 
 @keyframes blink {
@@ -446,7 +446,7 @@ footer {
 }
 
 .know-more-btn {
-    background-color: #e94e3b;
+    background-color: #cc3a2a;
     color: white;
     padding: 15px 30px;
     border-radius: 5px;
@@ -458,7 +458,7 @@ footer {
 }
 
 .know-more-btn:hover {
-    background-color: #cc3a2a;
+    background-color: #b5280e;
 }
 
 .purpose {
@@ -502,7 +502,7 @@ footer {
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url('file:///C:/Users/ASUS/Desktop/college/Subjects/Sem3/FEE/project/images/support.jpg');
+    background-image: url('images/support.jpg');
     background-position: center;
     opacity: 0.9;
     z-index: 1;
@@ -546,7 +546,7 @@ footer {
 }
 
 .contact-button {
-    background-color: #e94e3b;
+    background-color: #cc3a2a;
     color: white;
     padding: 15px 30px;
     border-radius: 5px;
@@ -559,7 +559,7 @@ footer {
 }
 
 .contact-button:hover {
-    background-color: #cc3a2a;
+    background-color: #b5280e;
 }
 
 /* Media Queries */
@@ -658,3 +658,158 @@ footer {
     }
   }
   
+/* About Page */
+
+.about-section {
+    background-color: #1b1c1b;
+    text-align: center;
+    color: white;
+    position: relative;
+    margin: 0;
+}
+
+.about-header h1 {
+    font-size: 96px;
+    padding: 100px 100px;
+    position: relative;
+    z-index: 2;
+    margin: 0;
+}
+
+.about-header {
+    position: relative;
+    margin: 0;
+}
+
+.about-header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('images/aboutus.jpg');
+    background-position: center;
+    opacity: 0.9;
+    z-index: 1;
+    margin: 0;
+}
+
+
+.about-text-section-container {
+    background: #1b1c1b;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    z-index: 1000;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.about-text-content span {
+    font-size: 48px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: lighter;
+}
+
+.about-text-content p {
+    font-size: 20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: lighter;
+} 
+
+.about-text-section {
+    background-color: #1b1c1b;
+    color: white;
+    /* display: flex; */
+    justify-content: space-between;
+    width: 100%;
+    text-align: center;
+    padding: 50px;
+}
+
+/*.about-text-content {
+    padding: 50px 200px 50px 50px;
+} 
+*/
+
+.about-block {
+    background-color: #232323;
+    color: white;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s, transform 0.3s;
+    margin:0 0 0 0;
+}
+
+.about-block:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* animation: blink 1s; */
+}
+
+@keyframes blink {
+    50% { opacity: 0.7; }
+}
+
+.about-image img {
+    margin: 25px 25px;
+    width: 90%;
+    max-width: 768px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 20px 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.about-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width:930px;
+}
+
+.about-title {
+    display: flex;
+    font-size: 48px;
+    font-weight: bolder;
+    margin: 25px 100px 10px 100px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.about-description {
+    display: flex;
+    max-width: 100%;
+    font-size: 20px;
+    margin: 25px 100px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+
+/* Align the content to the right for the second game */
+.align-right {
+    align-items: flex-end; /* Align the title and description to the right */
+    text-align: right; /* Align the text content to the right */
+}
+
+.align-right .about-title, 
+.align-right .about-description {
+    margin: 25px 100px; /* Adjust margin to avoid pushing the content to the left */
+}
+
+.about-button {
+    background-color: #cc3a2a;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size:20px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    margin: 50px 100px;
+}
+
+.about-button:hover {
+    background-color: #b5280e;
+}
