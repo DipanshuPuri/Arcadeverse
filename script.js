@@ -2,49 +2,50 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('DOM fully loaded and parsed');
 
     // Slideshow initialization
-    const slideshowImage = document.getElementById('slideshow-image');
-    console.log('Slideshow image element:', slideshowImage);
+    const slideshowVideo = document.getElementById('slideshow-video');
+    console.log('Slideshow video element:', slideshowVideo);
 
-    if (slideshowImage) {
-        const images = [
-            "images/cardmemorymatch3.jpg",
-            "images/tictactoe5.png",
-            "images/typingmaster5.png",
-            "images/rps1final.jpg"
+    if (slideshowVideo) {
+        const videos = [
+            "images/cardmemorymatch_animation.mp4",
+            "images/tictactoe_animation.mp4",
+            "images/typingmaster_animation.mp4",
+            "images/rps_animation.mp4"
         ];
 
         const indicators = document.querySelectorAll('.indicator');
         let currentIndex = 0;
         let isTransitioning = false;
-        let isFirstImageChange = true; // Flag to track if the first image change has occurred
+        let isFirstVideoChange = true; // Flag to track if the first video change has occurred
         const fadeDuration = 1000; // Duration of fade transitions in milliseconds
 
-        function changeImage() {
+        function changeVideo() {
             if (isTransitioning) return;
 
             isTransitioning = true;
-            slideshowImage.classList.add('fade-out');
+            slideshowVideo.classList.add('fade-out');
 
             setTimeout(() => {
-                currentIndex = (currentIndex + 1) % images.length;
-                slideshowImage.src = images[currentIndex];
-                slideshowImage.classList.remove('fade-out');
-                slideshowImage.classList.add('fade-in');
+                currentIndex = (currentIndex + 1) % videos.length;
+                slideshowVideo.src = videos[currentIndex];
+                slideshowVideo.play();
+                slideshowVideo.classList.remove('fade-out');
+                slideshowVideo.classList.add('fade-in');
 
                 setTimeout(() => {
-                    slideshowImage.classList.remove('fade-in');
+                    slideshowVideo.classList.remove('fade-in');
                     isTransitioning = false;
 
-                    // Update indicators only after the first image change
-                    if (!isFirstImageChange) {
+                    // Update indicators only after the first video change
+                    if (!isFirstVideoChange) {
                         updateIndicators();
                     }
                 }, fadeDuration);
             }, fadeDuration);
 
             // Update indicators immediately after initialization
-            if (isFirstImageChange) {
-                isFirstImageChange = false;
+            if (isFirstVideoChange) {
+                isFirstVideoChange = false;
             }
         }
 
@@ -68,15 +69,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 currentIndex = clickedIndex;
                 isTransitioning = true;
 
-                slideshowImage.classList.add('fade-out');
+                slideshowVideo.classList.add('fade-out');
 
                 setTimeout(() => {
-                    slideshowImage.src = images[currentIndex];
-                    slideshowImage.classList.remove('fade-out');
-                    slideshowImage.classList.add('fade-in');
+                    slideshowVideo.src = videos[currentIndex];
+                    slideshowVideo.play();
+                    slideshowVideo.classList.remove('fade-out');
+                    slideshowVideo.classList.add('fade-in');
 
                     setTimeout(() => {
-                        slideshowImage.classList.remove('fade-in');
+                        slideshowVideo.classList.remove('fade-in');
                         isTransitioning = false;
                     }, fadeDuration);
                 }, fadeDuration);
@@ -85,9 +87,10 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // Initialize the first image without updating indicators
+        // Initialize the first video without updating indicators
         function initializeSlideshow() {
-            slideshowImage.src = images[currentIndex];
+            slideshowVideo.src = videos[currentIndex];
+            slideshowVideo.play();
         }
 
         initializeSlideshow();
@@ -97,9 +100,9 @@ document.addEventListener('DOMContentLoaded', () => {
             indicator.addEventListener('click', handleIndicatorClick);
         });
 
-        setInterval(changeImage, 3000); // Change image every 3 seconds
+        setInterval(changeVideo, 3000); // Change video every 3 seconds
     } else {
-        console.error('Slideshow image element not found');
+        console.error('Slideshow video element not found');
     }
 
     // Navbar scroll effect
