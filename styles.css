@@ -68,9 +68,13 @@ body {
 }
 
 .navbar .site-name {
-    font-size: 40px;
+    font-size: 36px;
     font-weight: bolder;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.navbar .site-name span {
+    letter-spacing: 2.25px;
 }
 
 .navbar .logo-name-wrap {
@@ -81,8 +85,10 @@ body {
 
 .navbar .subtitle {
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: 38%;
+    font-size: 10px;
     margin-left: 0px;
+    letter-spacing: 3.25px;
+    font-weight: lighter;
 }
 
 .navbar .nav-links {
@@ -105,7 +111,7 @@ body {
 
 /* Smaller NavBar */
 
-.navbar, .navbar .site-name, .navbar .nav-links a, .navbar .logo {
+.navbar, .navbar .site-name,.navbar .site-name .subtitle, .navbar .nav-links a, .navbar .logo {
     transition: all 0.25s ease-in-out;
 }
 
@@ -117,6 +123,10 @@ body {
 
 .navbar.shrink .site-name {
     font-size: 30px;
+}
+
+.navbar.shrink .site-name .subtitle {
+    font-size: 8px;
 }
 
 .navbar.shrink .nav-links {
@@ -220,7 +230,7 @@ body {
     width: 16px;
     height: 16px;
     border-radius: 50%;
-    background-color: #ffffff; 
+    background-color: #fff; 
     transition: background-color 0.3s, transform 0.3s, outline 0.3s;
     border: 2px solid transparent; 
     z-index: 1000;
@@ -497,27 +507,14 @@ footer {
     font-size: 96px;
     padding: 100px 100px;
     position: relative;
-    z-index: 2;
+    z-index: 5;
     margin: 0;
 }
 
 .support-header {
     position: relative;
     margin: 0;
-}
-
-.support-header::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: url('images/support2.jpg');
-    background-position: center;
-    opacity: 0.9;
-    z-index: 1;
-    margin: 0;
+    z-index: 4;
 }
 
 .contact-section-container {
@@ -683,29 +680,15 @@ footer {
     font-size: 96px;
     padding: 100px 100px;
     position: relative;
-    z-index: 2;
+    z-index: 5;
     margin: 0;
 }
 
 .about-header {
     position: relative;
-    margin: 0;
+    margin: 0; 
+    z-index: 4;
 }
-
-.about-header::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: url('images/aboutus5.png');
-    background-position: center;
-    opacity: 0.9;
-    z-index: 1;
-    margin: 0;
-}
-
 
 .about-text-section-container {
     background: #1b1c1b;
@@ -832,7 +815,8 @@ footer {
     text-align: center;
     color: white;
     position: relative;
-    margin: 0;
+    margin: 0; 
+    z-index: 1;
 }
 
 .games-header h1 {
@@ -846,20 +830,7 @@ footer {
 .games-header {
     position: relative;
     margin: 0;
-}
-
-.games-header::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: url('images/games4.png');
-    background-position: center;
-    opacity: 0.9;
-    z-index: 1;
-    margin: 0;
+    z-index: 4;
 }
 
 .game-button {
@@ -877,4 +848,24 @@ footer {
 
 .game-button:hover {
     background-color: #b5280e;
+}
+
+.background-video {
+    position: absolute; /* Fixed to cover the viewport */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    margin: 0 auto;
+    opacity: 0.9;
+    object-fit: cover; /* Ensure the video covers the area */
+    z-index: 3; /* Place behind all other content */
+}
+
+.games-section {
+    position: relative; /* Ensure content stays above the video */
+    z-index: -1; /* Stack content above the video */
 }
