@@ -2,125 +2,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arcadeverse</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Memory Game with JavaScript</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
-    <!-- Navigation Bar -->
-    <nav class="navbar">
-        <div class="container site-name">
-            <div class="logo-name-wrap">
-                <img class="logo" src="images/logo2.jpg" alt="logo">
-                <div class="site-name">
-                    <span> ARCADEVERSE </span> 
-                    <div class="subtitle"> THE RETRO GAME HAVEN</div>
-                </div>
-            </div>
-            <div class="nav-links">
-                <a href="index.html">Home</a>
-                <a href="games.html">Games</a>
-                <a href="support.html">Support</a>
-                <a href="#">Profile</a>
-                <a href="#">Careers</a>
-                <a href="about.html">About</a>
-            </div>
+    <div class="game">
+    <img src="C:\Users\hp\Downloads\cardmemorymatch1 (2).jpg" alt="Game Logo" class="game-logo">
+    <div class="board-container">
+        <div class="board" data-dimension="4"></div>
+        <div class="win"></div>
+    </div>
+    <div class="controls">
+        <button id="start-button">Start</button>
+        <div class="stats">
+            <div class="moves">0 moves</div>
+            <div class="timer">Time: 60 sec</div>
         </div>
-    </nav>
+      </div>
+   </div>
 
-    <!-- Main Content -->
-    <div class="slideshow-container">
-        <div class="overlay"></div> <!-- Black overlay for fade effect -->
-        <div class="slideshow">
-            <video id="slideshow-video" autoplay muted loop></video>
-        </div>
-        <div class="indicator-container">
-            <div class="indicator"></div>
-            <div class="indicator"></div>
-            <div class="indicator"></div>
-            <div class="indicator"></div>
+    <div id="popup-overlay">
+        <div class="popup-content">
+            <div class="win-text"></div>
+            <button id="retry-button" class="retry-button">Restart Game</button>
         </div>
     </div>
-    <div class="blue-section">
-        <div class="content-container">
-            <div class="image-container">
-                <img src="images/minimallogo3.png" alt="ArcadeverseLogo">
-            </div>
-            <div class="text-container">
-                <span>Welcome to Arcadeverse!</span>
-                <p>Arcadeverse is the ultimate online destination for retro-themed arcade games, offering a diverse selection of classic titles from our childhood. Whether you are looking to test your skills in a classic game of Tic-Tac-Toe, sharpen your Memory with a Card Mmatching Match, or challenge your typing speed with Typing Master, Arcadeverse provides an authentic nostalgic experience for everyone. <br> <br>Explore our diverse selection of games in the retro game haven!</p>
-                <button class="know-more-btn">KNOW MORE</button>
-                <p class="purpose">Our purpose...</p>
-                <p class="unleash">"to relive the past one more time”</p>
-            </div>
-        </div>
-    </div>
-    <div class="mostpopulargames">
-        <span>OUR MOST POPULAR GAMES</span>
-    </div>
-    <div>
-        <div class="game-block container">
-            <aside class="game-image">
-                <img src="images/tictactoe7.png" alt="TicTacToe">
-            </aside>
-            <div class="game-info">
-                <span class="game-title">Tic Tac Toe: The Ultimate Showdown</span>
-                <p class="game-description">Get ready for a timeless classic that brings out the competitive spirit in everyone! Tic Tac Toe is the perfect quick and fun game to challenge your friends or test your own strategic skills.</p>
-            </div>    
-        </div>
-        <div class="game-block container">
-            <div class="game-info align-right">
-                <span class="game-title">Card Memory Match: Test Your Memory</span>
-                <p class="game-description">Put your memory to the test with this classic game! Flip the cards, find the pairs, and challenge your concentration. Perfect for a quick mental workout or fun competition with friends.</p>
-            </div>    
-            <aside class="game-image">
-                <img src="images/cardmemorymatch4.jpg" alt="CardMemoryMatch">
-            </aside>
-        </div>
-        <div class="game-block container">
-            <aside class="game-image">
-                <img src="images/typingmaster7.png" alt="TypingMaster">
-            </aside>
-            <div class="game-info">
-                <span class="game-title">Typing Master: Become a Typing Pro</span>
-                <p class="game-description">Challenge yourself with Typing Master! Improve your speed and accuracy as you race through exciting typing challenges. Perfect for a quick skill boost or fun competition with friends.</p>
-            </div>    
-        </div>
-    </div>
-    
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <img src="images/logo2.jpg" alt="Logo" class="footer-logo">
-            <div class="footer-links">
-                <a href="index.html">Home</a>
-                <a href="games.html">Games</a>
-                <a href="support.html">Support</a>
-                <a href="#">Profile</a>
-                <a href="#">Careers</a>
-                <a href="about.html">About</a>
-            </div>
-            <div class="social-icons">
-                <a href="#"><img src="images/icon1.png" alt="Twitter Icon"></a>
-                <a href="#"><img src="images/icon2.png" alt="Facebook Icon"></a>
-                <a href="#"><img src="images/icon3.png" alt="YouTube Icon"></a>
-                <a href="#"><img src="images/icon4.png" alt="LinkedIn Icon"></a>
-                <a href="#"><img src="images/icon5.png" alt="Instagram Icon"></a>
-                <a href="#"><img src="images/icon6.png" alt="Apple Icon"></a>
-                <a href="#"><img src="images/icon7.png" alt="Pinterest Icon"></a>
-                <a href="#"><img src="images/icon8.png" alt="Github Icon"></a>
-            </div>            
-            <div class="footer-bottom">
-                <a href="#">Terms and Conditions</a>
-                <a href="#">Privacy Policy</a>
-                <a href="#">Content and Conduct Policy</a>
-                <a href="#">Cookie Policy</a>
-                <a href="#">Privacy Settings</a>
-                <p>The Retro Game Haven @ Arcadeverse © 2020 - 2024 Arcadeverse Team CU</p>
-            </div>
-        </div>
-    </footer>
-
-    <script src="script.js"> </script>
 </body>
+
 </html>
