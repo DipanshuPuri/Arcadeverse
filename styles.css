@@ -564,10 +564,103 @@ footer {
     font-weight: bold;
     transition: background-color 0.3s ease;
     margin:50px 0 20px 0;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .contact-button:hover {
     background-color: #b5280e;
+}
+
+/* On REACH OUT TO US button clcik */
+/* Form section container initially hidden */
+#form-container {
+    padding: 0 200px 50px 200px; 
+    display: flex;
+    align-items: center;
+    background-color: #232323;
+}
+
+/* Form Section */
+.form-section {
+    background-color: #232323;
+    padding: 0 20px 20px 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Form Elements */
+form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Form Field Background and Placeholder Styles */
+input, select, textarea {
+    width: 100%;
+    background-color: white;
+    color: black;
+    opacity: 0.9;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+input::placeholder, textarea::placeholder {
+    color: rgba(0, 0, 0, 0.5); /* Half-opacity placeholder */
+}
+
+/* Notes under the fields */
+form small.note {
+    color: white;
+    opacity: 0.7;
+    font-size: 14px;
+    text-align: left;
+    margin-top: -10px;
+}
+
+/* Submit Button */
+.form-submit-button {
+    background-color: #cc3a2a; /* Same as contact-button */
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    margin:50px auto;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    font-size: 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in-out;
+    width: 18%;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+/* Submit Button Hover Effect */
+.form-submit-button:hover {
+    background-color: #b5280e; /* Darker shade of the button */
+}
+
+/* Adjust spacing between fields */
+label {
+    font-size:18px;
+    margin-bottom: 5px;
+    color: white;
+}
+
+.form-section span {
+    color: white;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 48px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bold;
 }
 
 /* Media Queries */
@@ -802,6 +895,7 @@ footer {
     font-weight: bold;
     transition: background-color 0.3s ease;
     margin: 50px 100px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .about-button:hover {
@@ -844,6 +938,7 @@ footer {
     font-weight: bold;
     transition: background-color 0.3s ease;
     margin: 50px 100px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .game-button:hover {
