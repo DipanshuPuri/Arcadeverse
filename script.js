@@ -1,177 +1,124 @@
-const selectors = {
-    boardContainer: document.querySelector('.board-container'),
-    board: document.querySelector('.board'),
-    moves: document.querySelector('.moves'),
-    timer: document.querySelector('.timer'),
-    start: document.getElementById('start-button'), // Ensure correct ID
-    win: document.querySelector('.win'),
-    popupOverlay: document.getElementById('popup-overlay'),
-    retryButton: document.getElementById('retry-button') // Ensure correct ID
-};
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('DOM fully loaded and parsed');
 
-const state = {
-    gameStarted: false,
-    flippedCards: 0,
-    totalFlips: 0,
-    totalTime: 60, // Start with 60 seconds
-    remainingTime: 60,
-    loop: null,
-    countdown: null,
-    firstCard: null,
-    secondCard: null
-};
+    // Slideshow initialization
+    const slideshowVideo = document.getElementById('slideshow-video');
+    console.log('Slideshow video element:', slideshowVideo);
 
-const shuffle = array => {
-    const clonedArray = [...array];
-    for (let i = clonedArray.length - 1; i > 0; i--) {
-        const randomIndex = Math.floor(Math.random() * (i + 1));
-        [clonedArray[i], clonedArray[randomIndex]] = [clonedArray[randomIndex], clonedArray[i]];
-    }
-    return clonedArray;
-};
+    if (slideshowVideo) {
+        const videos = [
+            "images/cardmemorymatch_animation.mp4",
+            "images/tictactoe_animation.mp4",
+            "images/typingmaster_animation.mp4",
+            "images/rps_animation.mp4"
+        ];
 
-const pickRandom = (array, items) => {
-    const clonedArray = [...array];
-    const randomPicks = [];
-    for (let i = 0; i < items; i++) {
-        const randomIndex = Math.floor(Math.random() * clonedArray.length);
-        randomPicks.push(clonedArray[randomIndex]);
-        clonedArray.splice(randomIndex, 1);
-    }
-    return randomPicks;
-};
+        const indicators = document.querySelectorAll('.indicator');
+        let currentIndex = 0;
+        let isTransitioning = false;
+        let isFirstVideoChange = true; // Flag to track if the first video change has occurred
+        const fadeDuration = 1000; // Duration of fade transitions in milliseconds
 
-const generateGame = () => {
-    const dimensions = parseInt(selectors.board.getAttribute('data-dimension'), 10);
-    if (dimensions % 2 !== 0) {
-        throw new Error("The dimension of the board must be an even number.");
-    }
-    const emojis = ['🥔', '🍒', '🥑', '🌽', '🥕', '🍇', '🍉', '🍌', '🥭', '🍍'];
-    const picks = pickRandom(emojis, (dimensions * dimensions) / 2);
-    const items = shuffle([...picks, ...picks]);
-    selectors.board.innerHTML = items.map(item => `
-        <div class="card">
-            <div class="card-front"></div>
-            <div class="card-back">${item}</div>
-        </div>
-    `).join('');
-    selectors.board.style.gridTemplateColumns = `repeat(${dimensions}, auto)`;
-};
+        function changeVideo() {
+            if (isTransitioning) return;
 
-const startGame = () => {
-    state.gameStarted = true;
-    selectors.start.classList.add('disabled');
-    state.totalTime = 60;
-    state.remainingTime = 60;
+            isTransitioning = true;
+            slideshowVideo.classList.add('fade-out');
 
-    // Start the countdown timer
-    state.countdown = setInterval(() => {
-        state.remainingTime--;
-        selectors.timer.innerText = `Time: ${state.remainingTime} sec`;
+            setTimeout(() => {
+                currentIndex = (currentIndex + 1) % videos.length;
+                slideshowVideo.src = videos[currentIndex];
+                slideshowVideo.play();
+                slideshowVideo.classList.remove('fade-out');
+                slideshowVideo.classList.add('fade-in');
 
-        if (state.remainingTime <= 0) {
-            clearInterval(state.countdown);
-            endGame(false); // Time ran out
-        }
-    }, 1000);
-};
+                setTimeout(() => {
+                    slideshowVideo.classList.remove('fade-in');
+                    isTransitioning = false;
 
-const endGame = (won) => {
-    clearInterval(state.countdown);
-    const message = won
-        ? `You won!<br />with <span class="highlight">${state.totalFlips}</span> moves<br />under <span class="highlight">${state.totalTime - state.remainingTime}</span> seconds`
-        : `Time's up!<br />Try again!`;
+                    // Update indicators only after the first video change
+                    if (!isFirstVideoChange) {
+                        updateIndicators();
+                    }
+                }, fadeDuration);
+            }, fadeDuration);
 
-    selectors.boardContainer.classList.add('flipped');
-    selectors.win.innerHTML = `
-        <span class="win-text">${message}</span>
-    `;
-    showPopup();
-};
-
-// Function to reset the game
-const resetGame = () => {
-    state.gameStarted = false;
-    state.totalFlips = 0;
-    state.totalTime = 60;
-    state.remainingTime = 60;
-    clearInterval(state.countdown);
-    selectors.boardContainer.classList.remove('flipped');
-    generateGame();
-    hidePopup();
-};
-
-// Function to flip back all cards
-const flipBackCards = () => {
-    document.querySelectorAll('.card:not(.matched)').forEach(card => card.classList.remove('flipped'));
-    state.flippedCards = 0;
-    state.firstCard = null;
-    state.secondCard = null;
-};
-
-// Function to flip a card
-const flipCard = card => {
-    if (!state.gameStarted) startGame();
-
-    if (state.flippedCards < 2 && !card.classList.contains('flipped')) {
-        card.classList.add('flipped');
-        state.flippedCards++;
-
-        // Increment moves count only when two cards are flipped
-        if (state.flippedCards === 1) {
-            state.firstCard = card;
-        } else if (state.flippedCards === 2) {
-            state.secondCard = card;
-
-            const firstCardValue = state.firstCard.querySelector('.card-back').innerText;
-            const secondCardValue = state.secondCard.querySelector('.card-back').innerText;
-
-            // Increment total flips/moves
-            state.totalFlips++;
-
-            if (firstCardValue === secondCardValue) {
-                state.firstCard.classList.add('matched');
-                state.secondCard.classList.add('matched');
-                state.flippedCards = 0;
-                state.firstCard = null;
-                state.secondCard = null;
-
-                if (!document.querySelectorAll('.card:not(.matched)').length) {
-                    setTimeout(() => endGame(true), 1000);
-                }
-            } else {
-                setTimeout(flipBackCards, 1000);
+            // Update indicators immediately after initialization
+            if (isFirstVideoChange) {
+                isFirstVideoChange = false;
             }
-            
-            selectors.moves.innerText = `${state.totalFlips} moves`;
         }
+
+        function updateIndicators() {
+            indicators.forEach((indicator, index) => {
+                if (index === currentIndex) {
+                    indicator.classList.add('active');
+                } else {
+                    indicator.classList.remove('active');
+                }
+            });
+        }
+
+        function handleIndicatorClick(event) {
+            console.log('Indicator clicked');
+
+            if (isTransitioning) return;
+
+            const clickedIndex = Array.from(indicators).indexOf(event.target);
+            if (clickedIndex !== -1 && clickedIndex !== currentIndex) {
+                currentIndex = clickedIndex;
+                isTransitioning = true;
+
+                slideshowVideo.classList.add('fade-out');
+
+                setTimeout(() => {
+                    slideshowVideo.src = videos[currentIndex];
+                    slideshowVideo.play();
+                    slideshowVideo.classList.remove('fade-out');
+                    slideshowVideo.classList.add('fade-in');
+
+                    setTimeout(() => {
+                        slideshowVideo.classList.remove('fade-in');
+                        isTransitioning = false;
+                    }, fadeDuration);
+                }, fadeDuration);
+
+                updateIndicators();
+            }
+        }
+
+        // Initialize the first video without updating indicators
+        function initializeSlideshow() {
+            slideshowVideo.src = videos[currentIndex];
+            slideshowVideo.play();
+        }
+
+        initializeSlideshow();
+
+        indicators.forEach(indicator => {
+            console.log('Adding click listener');
+            indicator.addEventListener('click', handleIndicatorClick);
+        });
+
+        setInterval(changeVideo, 3000); // Change video every 3 seconds
+    } else {
+        console.error('Slideshow video element not found');
     }
-};
 
-// Function to show the popup
-const showPopup = () => selectors.popupOverlay.style.display = 'flex';
+    // Navbar scroll effect
+    const navbar = document.querySelector('.navbar');
 
-// Function to hide the popup
-const hidePopup = () => selectors.popupOverlay.style.display = 'none';
-
-// Function to attach event listeners
-const attachEventListeners = () => {
-    document.addEventListener('click', event => {
-        const card = event.target.closest('.card');
-        if (card && !card.classList.contains('matched') && !card.classList.contains('flipped')) {
-            flipCard(card);
-        } else if (event.target.id === 'start-button' && !event.target.classList.contains('disabled')) {
-            startGame();
-        } else if (event.target.id === 'retry-button') {
-            resetGame();
-        }
-    });
-};
-
-// Initialize game
-generateGame();
-attachEventListeners();
-
-
-
-
+    if (navbar) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                console.log('Adding shrink class');
+                navbar.classList.add('shrink');
+            } else {
+                console.log('Removing shrink class');
+                navbar.classList.remove('shrink');
+            }
+        });
+    } else {
+        console.error('Navbar element not found');
+    }
+});
