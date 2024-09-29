@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arcadeverse</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container site-name">
+            <div class="logo-name-wrap">
+                <img class="logo" src="images/logo2.jpg" alt="logo">
+                <div class="site-name">
+                    <span> ARCADEVERSE </span> 
+                    <div class="subtitle"> THE RETRO GAME HAVEN</div>
+                </div>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="games.html">Games</a>
+                <a href="support.html">Support</a>
+                <a href="careers.html">Careers</a>
+                <a href="about.html">About</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="careers-section">
+        <video class="background-video" autoplay loop muted>
+            <source src="images/careers_animation.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="careers-header">
+            <h1>Careers</h1>
+        </div>
+    </div>    
+    
+    <div class="careers-text-section-container">
+        <div class="careers-text-section">
+            <div class="careers-text-content">
+                <span class="careers-text-header">Work with us!</span>
+                <br><br>
+                <div class="careers-text">
+                    <p>Open Positions
+                        <br><br>We have big dreams and ambitious plans, which are powered by amazing people, just like you. We are continuously looking for brilliant people to join our team.
+                        <br>Arcadeversers have the opportunity to grow, be challenged, develop, inspire others, create, support, mentor, and have fun. 
+                        <br><br>Go on and check out our career opportunities, one may be just right for you!
+                    </p>
+                </div>    
+            </div>
+        </div>
+    </div>
+    <div class="currentjobopenings">
+        <span>CURRENT JOB OPENINGS</span>
+    </div>
+    
+    <!-- Career Opportunities Filter Section -->
+    <section class="career-filter-section">
+        <label for="location-select">Filter by: </label>
+        <select id="location-select">
+            <option value="all" selected> All Locations</option>
+            <option value="lisbon">Lisbon</option>
+            <option value="zoetermeer">Zoetermeer</option>
+            <option value="genoa">Genoa</option>
+            <option value="other">Other</option>
+        </select>
+    
+        <select id="department-select">
+            <option value="all" selected> All Departments</option>
+            <option value="accounting">Accounting & Finance Operations</option>
+            <option value="advertising">Advertising Monetisation</option>
+            <option value="crm">CRM</option>
+            <option value="game_design">Game Design</option>
+            <option value="cloud_engineering">Cloud Engineering</option>
+            <option value="data_engineering">Data Engineering</option>
+            <option value="server_development">Server Development</option>
+            <option value="quality_assurance">Quality Assurance</option>
+            <option value="technology">Technology</option>
+            <option value="office_management">Office Management</option>
+            <option value="game_development">Game Development</option>
+            <option value="client_development">Client Development</option>
+        </select>
+    </section>
+    
+    <section id="job-results" class="job-results">
+        <!-- Job Listings Section -->
+        <div class="job-listings-section">
+    
+            <div class="job-listing" data-location="lisbon" data-department="accounting">
+                <h3>Accounting & Finance Operations</h3>
+                <div class="job-content">
+                    <div class="job-details">
+                        <p>AP/AR Manager</p>
+                        <p>Lisbon, Portugal</p>
+                    </div>
+                    <button class="apply-button">Apply here</button>
+                </div>
+            </div>
+    
+            <div class="job-listing" data-location="lisbon" data-department="advertising">
+                <h3>Advertising Monetisation</h3>
+                <div class="job-content">
+                    <div class="job-details">
+                        <p>Senior Advertising Monetisation Manager</p>
+                        <p>Lisbon, Portugal</p>
+                    </div>
+                    <button class="apply-button">Apply here</button>
+                </div>
+            </div>
+    
+            <div class="job-listing" data-location="zoetermeer" data-department="crm">
+                <h3>CRM</h3>
+                <div class="job-content">
+                    <div class="job-details">
+                        <p>CRM Specialist</p>
+                        <p>Zoetermeer, Netherlands</p>
+                    </div>
+                    <button class="apply-button">Apply here</button>
+                </div>
+            </div>
+    
+            <div class="job-listing" data-location="zoetermeer" data-department="client_development">
+                <h3>Client Development</h3>
+                <div class="job-content">
+                    <div class="job-details">
+                        <p>Software Engineer Unity 3D</p>
+                        <p>Zoetermeer, Netherlands</p>
+                    </div>
+                    <button class="apply-button">Apply here</button>
+                </div>
+            </div>
+    
+            <div class="job-listing" data-location="lisbon" data-department="cloud_engineering">
+                <h3>Cloud Engineering</h3>
+                <div class="job-content">
+                    <div class="job-details">
+                        <p>Senior Cloud Engineer</p>
+                        <p>Lisbon, Portugal</p>
+                    </div>
+                    <button class="apply-button">Apply here</button>
+                </div>
+            </div>
+    
+            <div class="job-listing" data-location="lisbon" data-department="data_engineering">
+                <h3>Data Engineering</h3>
+                <div class="job-content">
+                    <div class="job-details">
+                        <p>Senior Data Engineer Lead</p>
+                        <p>Lisbon, Portugal</p>
+                    </div>
+                    <button class="apply-button">Apply here</button>
+                </div>
+            </div>
+    
+            <div class="job-listing" data-location="other" data-department="game_design">
+                <h3>Game Design</h3>
+                <div class="job-content">
+                    <div class="job-details">
+                        <p>Senior Game Designer</p>
+                        <p>Other, Portugal</p>
+                    </div>
+                    <button class="apply-button">Apply here</button>
+                </div>
+            </div>
+    
+            <div class="job-listing" data-location="zoetermeer" data-department="game_development">
+                <h3>Game Development</h3>
+                <div class="job-content">
+                    <div class="job-details">
+                        <p>Junior Backend Developer</p>
+                        <p>Zoetermeer, Netherlands</p>
+                    </div>
+                    <button class="apply-button">Apply here</button>
+                </div>
+            </div>
+    
+            <div class="job-listing" data-location="other" data-department="group_platform_engineering">
+                <h3>Group Platform Engineering</h3>
+                <div class="job-content">
+                    <div class="job-details">
+                        <p>Android Developer</p>
+                        <p>Other, Netherlands</p>
+                    </div>
+                    <button class="apply-button">Apply here</button>
+                </div>
+            </div>
+    
+            <div class="job-listing" data-location="other" data-department="group_platform_engineering">
+                <h3>Group Platform Engineering</h3>
+                <div class="job-content">
+                    <div class="job-details">
+                        <p>Mobile App Developer</p>
+                        <p>Other, Netherlands</p>
+                    </div>
+                    <button class="apply-button">Apply here</button>
+                </div>
+            </div>
+    
+            <div class="job-listing" data-location="lisbon" data-department="group_platform_engineering">
+                <h3>Group Platform Engineering</h3>
+                <div class="job-content">
+                    <div class="job-details">
+                        <p>Server Engineer</p>
+                        <p>Lisbon, Portugal</p>
+                    </div>
+                    <button class="apply-button">Apply here</button>
+                </div>
+            </div>
+    
+            <div class="job-listing" data-location="genoa" data-department="office_management">
+                <h3>Office Management</h3>
+                <div class="job-content">
+                    <div class="job-details">
+                        <p>Office Assistant (L. 68/99)</p>
+                        <p>Genoa, Italy</p>
+                    </div>
+                    <button class="apply-button">Apply here</button>
+                </div>
+            </div>
+    
+            <div class="job-listing" data-location="lisbon" data-department="quality_assurance">
+                <h3>Quality Assurance</h3>
+                <div class="job-content">
+                    <div class="job-details">
+                        <p>Games QA Engineer</p>
+                        <p>Lisbon, Portugal</p>
+                    </div>
+                    <button class="apply-button">Apply here</button>
+                </div>
+            </div>
+    
+            <div class="job-listing" data-location="zoetermeer" data-department="quality_assurance">
+                <h3>Quality Assurance</h3>
+                <div class="job-content">
+                    <div class="job-details">
+                        <p>QA Tester</p>
+                        <p>Zoetermeer, Netherlands</p>
+                    </div>
+                    <button class="apply-button">Apply here</button>
+                </div>
+            </div>
+    
+            <div class="job-listing" data-location="genoa" data-department="server_development">
+                <h3>Server Development</h3>
+                <div class="job-content">
+                    <div class="job-details">
+                        <p>Software Developer</p>
+                        <p>Genoa, Italy</p>
+                    </div>
+                    <button class="apply-button">Apply here</button>
+                </div>
+            </div>
+    
+            <div class="job-listing" data-location="zoetermeer" data-department="technology">
+                <h3>Technology</h3>
+                <div class="job-content">
+                    <div class="job-details">
+                        <p>Senior Backend Developer</p>
+                        <p>Zoetermeer, Netherlands</p>
+                    </div>
+                    <button class="apply-button">Apply here</button>
+                </div>
+            </div>
+    
+            <div class="job-listing" data-location="genoa" data-department="technology">
+                <h3>Technology</h3>
+                <div class="job-content">
+                    <div class="job-details">
+                        <p>Software Developer</p>
+                        <p>Genoa, Italy</p>
+                    </div>
+                    <button class="apply-button">Apply here</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="no-results-message" style="display: none; color: #fff; margin-top: 20px;">
+            No results found, please change your filter options.
+        </div>
+        
+    </section>
+    
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <img src="images/logo2.jpg" alt="Logo" class="footer-logo">
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="games.html">Games</a>
+                <a href="support.html">Support</a>
+                <a href="careers.html">Careers</a>
+                <a href="about.html">About</a>
+            </div>
+            <div class="social-icons">
+                <a href="#"><img src="images/icon1.png" alt="Twitter Icon"></a>
+                <a href="#"><img src="images/icon2.png" alt="Facebook Icon"></a>
+                <a href="#"><img src="images/icon3.png" alt="YouTube Icon"></a>
+                <a href="#"><img src="images/icon4.png" alt="LinkedIn Icon"></a>
+                <a href="#"><img src="images/icon5.png" alt="Instagram Icon"></a>
+                <a href="#"><img src="images/icon6.png" alt="Apple Icon"></a>
+                <a href="#"><img src="images/icon7.png" alt="Pinterest Icon"></a>
+                <a href="#"><img src="images/icon8.png" alt="Github Icon"></a>
+            </div>            
+            <div class="footer-bottom">
+                <a href="#">Terms and Conditions</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Content and Conduct Policy</a>
+                <a href="#">Cookie Policy</a>
+                <a href="#">Privacy Settings</a>
+                <p>The Retro Game Haven @ Arcadeverse © 2020 - 2024 Arcadeverse Team CU</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"> </script>
+</body>
+</html>
