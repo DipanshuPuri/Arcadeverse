@@ -128,9 +128,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (reachOutBtn) {
         reachOutBtn.addEventListener('click', () => {
-            // Scroll down smoothly to where the form will appear
             window.scrollBy({
-                top: 500, // Adjust how much you want to scroll
+                top: 500, 
                 behavior: 'smooth'
             });
 
@@ -161,7 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <option value="game3">Typing Master</option>
                         </select>
                         
-                        <label for="category">Please selecr the issue that you are having</label>
+                        <label for="category">Please select the issue that you are having</label>
                         <select id="category" name="category">
                             <option value="" disabled selected>Select an option</option>
                             <option value="game1">Payment and billing</option>
@@ -171,7 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <option value="game3">Questions about the game</option>
                             <option value="game3">Other issues</option>
                         </select>
-                        <small class="note">Please select an issue you are having. Selecting correct topic allows us to help you faster.</small>
+                        <small class="note">Please select an issue you are having. Selecting the correct topic allows us to help you faster.</small>
                         
                         <label for="email">Your email address</label>
                         <input type="email" id="email" name="email" placeholder="Enter text here" required>
@@ -201,4 +200,44 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error('Reach Out button not found');
     }
 
+    const locationSelect = document.getElementById('location-select');
+    const departmentSelect = document.getElementById('department-select');
+    const jobListings = document.querySelectorAll('.job-listing');
+    const noResultsMessage = document.querySelector('.no-results-message');
+
+    // Function to filter job listings based on selected criteria
+    function filterJobs() {
+        const selectedLocation = locationSelect.value;
+        const selectedDepartment = departmentSelect.value;
+        let foundJob = false;
+
+        jobListings.forEach(job => {
+            const jobLocation = job.getAttribute('data-location');
+            const jobDepartment = job.getAttribute('data-department');
+    
+            const locationMatch = selectedLocation === 'all' || jobLocation === selectedLocation;
+            const departmentMatch = selectedDepartment === 'all' || jobDepartment === selectedDepartment;
+    
+            if (locationMatch && departmentMatch) {
+                job.style.display = ''; 
+                foundJob = true; 
+            } else {
+                job.style.display = 'none'; 
+            }
+        });
+
+        if (foundJob) {
+            noResultsMessage.style.display = 'none'; 
+        } else {
+            noResultsMessage.style.display = 'block';
+        }
+    }
+    
+    // Event listeners for filters
+    locationSelect.addEventListener('change', filterJobs);
+    departmentSelect.addEventListener('change', filterJobs);
+    
+    // Initial filter application on page load
+    filterJobs();
+    
 });
