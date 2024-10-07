@@ -200,6 +200,17 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error('Reach Out button not found');
     }
 
+    // Check for valid email address
+    document.querySelector('form').addEventListener('submit', (e) => {
+        const email = document.getElementById('email').value;
+        if (!email.includes('@')) {
+            e.preventDefault(); // Stop form submission
+            alert('Please enter a valid email address');
+        }
+    });    
+
+
+    // Job filter variables
     const locationSelect = document.getElementById('location-select');
     const departmentSelect = document.getElementById('department-select');
     const jobListings = document.querySelectorAll('.job-listing');
@@ -240,4 +251,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initial filter application on page load
     filterJobs();
     
+    // Smooth Scrolling
+    document.querySelectorAll('.nav-links a').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+
+    
+
 });
