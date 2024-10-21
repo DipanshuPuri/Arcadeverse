@@ -1,12 +1,26 @@
 html {
     width: 100%;
     height: 100%;
-    background: #0066b2; /* Update background color to #0066b2 */
+    background: linear-gradient(270deg, #005cbf, #0066b2, #001f5f); /* Bold blue gradient shades */
+    background-size: 400% 400%; /* Makes the gradient transition smoother */
     font-family: Arial, Helvetica, sans-serif;
     overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
+    animation: gradientShift 10s ease-in-out infinite; /* Gradient animation */
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 .game {
@@ -14,6 +28,20 @@ html {
     align-items: center;
     justify-content: center;
     width: 90%;
+    margin-top: 120px;
+    animation: gameFloat 6s ease-in-out infinite alternate; /* Floating effect for the game */
+}
+
+@keyframes gameFloat {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px); /* Game board floats up */
+    }
+    100% {
+        transform: translateY(0);
+    }
 }
 
 .game-logo {
@@ -21,26 +49,28 @@ html {
     height: 90%;
     max-width: 45%;
     object-fit: contain;
-    margin-right: 70px; /* Move the logo slightly to the right */
-    background-color: #0066b2; /* Match logo color to the background */
+    margin-right: 70px;
+    margin-top: 50px;
+    background-color: #0066b2;
 }
 
 .board-container {
     position: relative;
     flex-grow: 1;
-    margin-left: 10px; /* Move the board slightly to the left */
+    margin-left: 10px;
     display: flex;
     justify-content: center;
+    margin-top: 50px;
 }
 
 .board,
 .win {
-    border-radius: 5px;
-    box-shadow: 0 25px 50px rgb(33 33 33 / 25%);
-    background: #0066b2; /* Set game board background color to #0066b2 */
-    transition: transform .6s cubic-bezier(0.4, 0.0, 0.2, 1);
+    border-radius: 10px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    background: #005cbf;
+    transition: transform 0.6s cubic-bezier(0.4, 0.0, 0.2, 1);
     backface-visibility: hidden;
-    border: 2px solid white;
+    border: 4px solid white;
 }
 
 .board {
@@ -55,6 +85,7 @@ html {
 }
 
 .board-container.flipped .win {
+    background: mistyrose;
     transform: rotateY(0) rotateZ(0);
 }
 
@@ -76,6 +107,12 @@ button {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 18pt;
     font-weight: bold;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+    background: #39405c;
+    transform: scale(1.05);
 }
 
 button.disabled {
@@ -95,35 +132,37 @@ button.disabled {
     width: 100px;
     height: 100px;
     cursor: pointer;
-    border: 2px solid white;
+    border: 4px solid white;
+    border-radius: 10px;
+    overflow: hidden;
 }
 
 .card-front,
 .card-back {
     position: absolute;
-    border-radius: 5px;
+    border-radius: 10px;
     width: 100%;
     height: 100%;
     background: #282A3A;
-    transition: transform .6s cubic-bezier(0.4, 0.0, 0.2, 1);
+    transition: transform 0.6s cubic-bezier(0.4, 0.0, 0.2, 1);
     backface-visibility: hidden;
 }
 
 .card-back {
-    transform: rotateY(180deg) rotateZ(50deg);
+    transform: rotateY(180deg);
     font-size: 28pt;
     user-select: none;
     text-align: center;
     line-height: 100px;
-    background: #FDF8E6;
+    background: #fdf8e6;
 }
 
 .card.flipped .card-front {
-    transform: rotateY(180deg) rotateZ(50deg);
+    transform: rotateY(180deg);
 }
 
 .card.flipped .card-back {
-    transform: rotateY(0) rotateZ(0);
+    transform: rotateY(0);
 }
 
 .win {
@@ -133,48 +172,43 @@ button.disabled {
     width: 100%;
     height: 100%;
     text-align: center;
-    background: #FDF8E6;
-    transform: rotateY(180deg) rotateZ(50deg);
+    border-radius: 10px;
+    transform: rotateY(180deg);
+}
+.thumbs-up {
+    width: 50px; /* Adjust the size as needed */
+    height: auto; /* Maintain aspect ratio */
+    vertical-align: middle; /* Aligns the GIF with the text */
+    margin: 0 10px; /* Space between the GIF and the text */
 }
 
 .win-text {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 21pt;
+    top: 30%;
+    left: 27%;
+    transform: translate(-30%, -45%) scale(0.8); /* Start slightly smaller */
+    font-size: 28pt;
     color: #282A3A;
     margin-bottom: 40px;
+    opacity: 0;
+    animation: textAppear 1s ease-in-out forwards; /* Use the new animation */
 }
 
-.highlight {
-    color: #7303c0;
+@keyframes textAppear {
+    0% {
+        opacity: 0;
+        transform: translate(-30%, -45%) scale(0.8); /* Small and faded */
+    }
+    60% {
+        opacity: 1;
+        transform: translate(-30%, -45%) scale(1.1); /* Slightly larger for a pop effect */
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-30%, -45%) scale(1); /* Final position and size */
+    }
 }
 
-#popup-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    display: none;
-    justify-content: center;
-    align-items: center;
-}
-
-.popup-content {
-    background: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 400px;
-    position: absolute;
-    bottom: 10%;
-}
 
 .retry-button {
     background: #282A3A;
@@ -186,8 +220,136 @@ button.disabled {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 18pt;
     font-weight: bold;
-    margin-top: 20px;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    position: absolute;
+    right: 450px;
+    bottom: 180px;
 }
+
+.retry-button.show {
+    opacity: 1;
+}
+
+@keyframes textFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes buttonFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Navigation Bar Styles */
+.navbar {
+    background-color: #07080a;
+    color: white;
+    padding: 20px 0;
+    margin: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1200;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    max-width: 30%;
+    border: none !important;
+    outline: none !important;
+    padding: 0 !important;
+    margin-right: 20px;
+    box-shadow: none !important;
+    vertical-align: top;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar .site-name {
+    font-size: 36px;
+    font-weight: bolder;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.navbar .site-name span {
+    letter-spacing: 2.25px;
+}
+
+.navbar .logo-name-wrap {
+    display: flex;
+    align-items: center;
+    margin-left: 30px;
+}
+
+.navbar .subtitle {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 10px;
+    letter-spacing: 3.25px;
+    font-weight: lighter;
+}
+
+.navbar .nav-links {
+    margin-bottom: 20px;
+    margin-right: 40px;
+}
+
+.navbar .nav-links a {
+    color: white;
+    text-decoration: none;
+    margin: 0 20px;
+    font-size: 20px;
+    transition: color 0.3s;
+}
+
+.navbar .nav-links a:hover {
+    color: #E0EAF5;
+}
+
+.navbar.shrink {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding: 22.5px 0;
+}
+
+.navbar.shrink .site-name {
+    font-size: 30px;
+}
+
+.navbar.shrink .site-name .subtitle {
+    font-size: 8px;
+}
+
+.navbar.shrink .nav-links {
+    margin-bottom: 10px;
+}
+
+.navbar.shrink .nav-links a {
+    font-size: 18px;
+    margin: 0 10px;
+}
+
+.navbar.shrink .logo {
+    max-width: 20%;
+}
+
 
 
 
