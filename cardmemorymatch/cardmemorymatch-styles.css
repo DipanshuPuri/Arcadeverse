@@ -43,16 +43,20 @@ html {
         transform: translateY(0);
     }
 }
-
 .game-logo {
     flex-grow: 0;
-    height: 90%;
-    max-width: 45%;
+    height: 70%; /* Reduced height */
+    max-width: 35%; /* Reduced max-width */
     object-fit: contain;
-    margin-right: 70px;
+    margin-right: 50px; /* Adjusted to keep the space on the right */
+    margin-left: 55px; /* Added to shift the logo to the right */
     margin-top: 50px;
     background-color: #0066b2;
+    border: 3px solid #ffffff; /* White outline around the logo */
+    border-radius: 8px; /* Optional: Rounded corners */
 }
+
+
 
 .board-container {
     position: relative;
@@ -184,8 +188,8 @@ button.disabled {
 
 .win-text {
     position: absolute;
-    top: 30%;
-    left: 27%;
+    top: 40%;
+    left: 40%;
     transform: translate(-30%, -45%) scale(0.8); /* Start slightly smaller */
     font-size: 28pt;
     color: #282A3A;
@@ -349,6 +353,11 @@ button.disabled {
 .navbar.shrink .logo {
     max-width: 20%;
 }
+
+
+
+
+
 
 
 
