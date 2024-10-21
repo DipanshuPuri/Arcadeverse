@@ -9,6 +9,19 @@ const selectors = {
     retryButton: document.getElementById('retry-button') // Ensure correct ID
 };
 
+// Navbar scroll effect
+const navbar = document.querySelector('.navbar');
+
+if (navbar) {
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            navbar.classList.add('shrink');
+        } else {
+            navbar.classList.remove('shrink');
+        }
+    });
+}
+
 const state = {
     gameStarted: false,
     flippedCards: 0,
@@ -63,12 +76,14 @@ const startGame = () => {
     selectors.start.classList.add('disabled');
     state.totalTime = 60;
     state.remainingTime = 60;
+    selectors.retryButton.classList.remove('show');
 
     // Start the countdown timer
     state.countdown = setInterval(() => {
         state.remainingTime--;
         selectors.timer.innerText = `Time: ${state.remainingTime} sec`;
 
+        // End the game if time runs out
         if (state.remainingTime <= 0) {
             clearInterval(state.countdown);
             endGame(false); // Time ran out
@@ -86,10 +101,15 @@ const endGame = (won) => {
     selectors.win.innerHTML = `
         <span class="win-text">${message}</span>
     `;
+
+    // Show the retry button after a short delay to align with board flipping
+    setTimeout(() => {
+        selectors.retryButton.classList.add('show');
+    }, 1000);
+    
     showPopup();
 };
 
-// Function to reset the game
 const resetGame = () => {
     state.gameStarted = false;
     state.totalFlips = 0;
@@ -97,11 +117,11 @@ const resetGame = () => {
     state.remainingTime = 60;
     clearInterval(state.countdown);
     selectors.boardContainer.classList.remove('flipped');
+    selectors.retryButton.classList.remove('show');
     generateGame();
     hidePopup();
 };
 
-// Function to flip back all cards
 const flipBackCards = () => {
     document.querySelectorAll('.card:not(.matched)').forEach(card => card.classList.remove('flipped'));
     state.flippedCards = 0;
@@ -109,7 +129,6 @@ const flipBackCards = () => {
     state.secondCard = null;
 };
 
-// Function to flip a card
 const flipCard = card => {
     if (!state.gameStarted) startGame();
 
@@ -117,7 +136,6 @@ const flipCard = card => {
         card.classList.add('flipped');
         state.flippedCards++;
 
-        // Increment moves count only when two cards are flipped
         if (state.flippedCards === 1) {
             state.firstCard = card;
         } else if (state.flippedCards === 2) {
@@ -126,7 +144,6 @@ const flipCard = card => {
             const firstCardValue = state.firstCard.querySelector('.card-back').innerText;
             const secondCardValue = state.secondCard.querySelector('.card-back').innerText;
 
-            // Increment total flips/moves
             state.totalFlips++;
 
             if (firstCardValue === secondCardValue) {
@@ -148,13 +165,9 @@ const flipCard = card => {
     }
 };
 
-// Function to show the popup
 const showPopup = () => selectors.popupOverlay.style.display = 'flex';
-
-// Function to hide the popup
 const hidePopup = () => selectors.popupOverlay.style.display = 'none';
 
-// Function to attach event listeners
 const attachEventListeners = () => {
     document.addEventListener('click', event => {
         const card = event.target.closest('.card');
