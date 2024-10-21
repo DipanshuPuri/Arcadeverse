@@ -4,31 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tic-Tac-Toe</title>
-    <link rel="stylesheet" href="tac.css">
+    <link rel="stylesheet" href="tictactoe-styles.css">
 </head>
 <body>
+    <!-- Navigation Bar -->
     <nav class="navbar">
         <div class="container site-name">
             <div class="logo-name-wrap">
-                <img class="logo" src="c:\Users\gaurika\Downloads\logo1.jpg" alt="logo">
-                <div class="site-name"">
-                    ARCADEVERSE 
-                    <div class="subtitle"> THE RETRO GAME HAVEN</div>
+                <img class="logo" src="../images/logo2.jpg" alt="Arcadeverse Logo">
+                <div class="site-name">
+                    <span>ARCADEVERSE</span>
+                    <div class="subtitle">THE RETRO GAME HAVEN</div>
                 </div>
             </div>
             <div class="nav-links">
-                <a href="#">Games</a>
-                <a href="#">Challenges</a>
-                <a href="#">Profile</a>
-                <a href="#">Instructions</a>
-                <a href="#">About</a>
+                <a href="../index.html">Home</a>
+                <a href="../games.html">Games</a>
+                <a href="../support.html">Support</a>
+                <a href="../careers.html">Careers</a>
+                <a href="../about.html">About</a>
             </div>
         </div>
     </nav>
     <div class="container">
         <!-- Logo on the left side of the grid -->
         <div class="logo-left">
-            <img src="c:\Users\gaurika\Downloads\WhatsApp Image 2024-08-24 at 10.30.00 PM.jpeg" alt="Logo" id="leftGridLogo">
+            <img src="../images/tictactoe7.png" alt="Logo" id="leftGridLogo">
         </div>
 
         <!-- Main game grid in the middle -->
@@ -62,7 +63,7 @@
     <div id="gameOptions" class="modal">
         <div class="modal-content">
             <!-- Logo inside modal -->
-            <img src="c:\Users\gaurika\Downloads\WhatsApp Image 2024-08-24 at 10.30.00 PM.jpeg" alt="Logo" id="modalLogo">
+            <img src="../images/tictactoe7.png" alt="Logo" id="modalLogo">
             <p class="neon-text">Choose your game mode:</p>
             <button id="vsComputer" class="optionBtn neon-btn big-btn">Play Against Computer</button>
             <button id="vsPlayer" class="optionBtn neon-btn big-btn">Play Against Player 2</button>
@@ -77,6 +78,6 @@
         </div>
     </div>
 
-    <script src="toe.js"></script>
+    <script src="tictactoe-script.js"></script>
 </body>
 </html>
