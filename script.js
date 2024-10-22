@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
             "images/cardmemorymatch_animation.mp4",
             "images/tictactoe_animation.mp4",
             "images/typingmaster_animation.mp4",
-            "images/rps_animation.mp4"
+            "images/snakerivals_animation.mp4"
         ];
 
         const indicators = document.querySelectorAll('.indicator');
@@ -209,48 +209,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });    
 
-
-    // Job filter variables
-    const locationSelect = document.getElementById('location-select');
-    const departmentSelect = document.getElementById('department-select');
-    const jobListings = document.querySelectorAll('.job-listing');
-    const noResultsMessage = document.querySelector('.no-results-message');
-
-    // Function to filter job listings based on selected criteria
-    function filterJobs() {
-        const selectedLocation = locationSelect.value;
-        const selectedDepartment = departmentSelect.value;
-        let foundJob = false;
-
-        jobListings.forEach(job => {
-            const jobLocation = job.getAttribute('data-location');
-            const jobDepartment = job.getAttribute('data-department');
-    
-            const locationMatch = selectedLocation === 'all' || jobLocation === selectedLocation;
-            const departmentMatch = selectedDepartment === 'all' || jobDepartment === selectedDepartment;
-    
-            if (locationMatch && departmentMatch) {
-                job.style.display = ''; 
-                foundJob = true; 
-            } else {
-                job.style.display = 'none'; 
-            }
-        });
-
-        if (foundJob) {
-            noResultsMessage.style.display = 'none'; 
-        } else {
-            noResultsMessage.style.display = 'block';
-        }
-    }
-    
-    // Event listeners for filters
-    locationSelect.addEventListener('change', filterJobs);
-    departmentSelect.addEventListener('change', filterJobs);
-    
-    // Initial filter application on page load
-    filterJobs();
-    
     // Smooth Scrolling
     document.querySelectorAll('.nav-links a').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
@@ -260,7 +218,5 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     });
-
-    
 
 });
