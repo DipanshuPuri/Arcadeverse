@@ -1,0 +1,227 @@
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  font-family: 'VT323', monospace;
+  background-image: url('C:/Users/hp/Desktop/Fee project/snake game/bg1.jpg'); /* Set the background image */
+  background-size: cover; /* Cover the entire body */
+  background-position: center; /* Center the background image */
+  background-repeat: no-repeat; /* Prevent repetition of the image */
+}
+
+body,
+.snake {
+  background-color: #414141; /* This may be redundant with a background image, consider removing */
+}
+#game-board {
+  border-radius: 0; /* Change to 0 for square corners */
+  display: grid;
+  grid-template-columns: repeat(20, 20px);
+  grid-template-rows: repeat(20, 20px);
+  margin: 5px;
+  position: relative; /* Allow positioning of children */
+  background-color: rgba(0, 0, 255, 0.2); /* Semi-transparent blue background */
+  background-image: 
+    linear-gradient(blue 1px, transparent 1px), /* Vertical lines */
+    linear-gradient(90deg, blue 1px, transparent 1px); /* Horizontal lines */
+  background-size: 20px 20px; /* Size of each grid square */
+}
+
+.game-border-1 {
+  border: #595f43 solid 10px;
+  border-radius: 0; /* Change to 0 for square corners */
+  box-shadow: inset 0 0 0 10px #595f43;
+}
+
+.game-border-2 {
+  border: #abb78a solid 8px;
+  border-radius: 0; /* Change to 0 for square corners */
+  box-shadow: inset 0 0 0 10px #abb78a;
+}
+
+.game-border-3 {
+  border: #00008B solid 30px;
+  border-radius: 0; /* Change to 0 for square corners */
+  box-shadow: inset 0 0 0 5px #8b966c;
+}
+
+
+#instruction-text {
+  position: absolute;
+  top: 60%;
+  color: #333;
+  width: 300px;
+  text-align: center;
+  text-transform: capitalize;
+  padding: 30px;
+  margin: 0;
+}
+.heading {
+  position: absolute;
+  right:230px;  /* Move left by increasing the value */
+  bottom: 460px; /* Move up by increasing the value */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  color: #d8ddca;      /* Dark blue color */
+  font-family: 'Arial', sans-serif; /* Font family */
+  font-weight: bold;   /* Bold font */
+}
+
+.scores {
+  position: absolute;
+  right:270px;  /* Move left by increasing the value */
+  bottom: 350px; /* Move up by increasing the value */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+#score {
+  color: #abb78a;
+}
+
+#score,
+#highScore {
+  font-size: 40px;
+  font-weight: bolder;
+  margin: 10px 0;
+}
+
+#highScore {
+  color: #d8ddca;
+  display: none;
+}
+
+
+
+
+.game-border-3,
+#logo {
+  background-color: #c4cfa3;
+}
+
+/* Snake styles */
+.snake {
+  background-color: #000000; /* Black color for the snake */
+  border-radius: 5px; /* Rounded corners */
+  transition: background-color 0.3s ease; /* Smooth color transition */
+}
+
+
+/* Food styles */
+.food {
+  background-color: #fffafa; /* Bright color for the food */
+  border-radius: 50%; /* Make food round */
+  box-shadow: 0 0 10px rgba(255, 87, 34, 0.5); /* Glow effect */
+}
+
+#logo {
+  position: absolute;
+  top: 55%; /* Position from the top */
+  left: 40px; /* Move slightly to the right */
+  transform: translateY(-50%); /* Center vertically */
+  width: 350px; /* Size of the logo */
+  height: auto; /* Maintain aspect ratio */
+  border: 5px solid #ffffff; /* Outline with white color */
+  border-radius: 15px; /* Rounding to the corners of the outline */
+  padding: 10px; /* Padding between the logo and border */
+}
+/* Navigation Bar Styles */
+.navbar {
+    background-color: #07080a;
+    color: white;
+    padding: 20px 0;
+    margin: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1200;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    max-width: 30%;
+    border: none !important;
+    outline: none !important;
+    padding: 0 !important;
+    margin-right: 20px;
+    box-shadow: none !important;
+    vertical-align: top;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar .site-name {
+    font-size: 36px;
+    font-weight: bolder;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.navbar .site-name span {
+    letter-spacing: 2.25px;
+}
+
+.navbar .logo-name-wrap {
+    display: flex;
+    align-items: center;
+    margin-left: 30px;
+}
+
+.navbar .subtitle {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 10px;
+    letter-spacing: 3.25px;
+    font-weight: lighter;
+}
+
+.navbar .nav-links {
+    margin-bottom: 20px;
+    margin-right: 40px;
+}
+
+.navbar .nav-links a {
+    color: white;
+    text-decoration: none;
+    margin: 0 20px;
+    font-size: 20px;
+    transition: color 0.3s;
+}
+
+.navbar .nav-links a:hover {
+    color: #E0EAF5;
+}
+
+.navbar.shrink {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding: 22.5px 0;
+}
+
+.navbar.shrink .site-name {
+    font-size: 30px;
+}
+
+.navbar.shrink .site-name .subtitle {
+    font-size: 8px;
+}
+
+.navbar.shrink .nav-links {
+    margin-bottom: 10px;
+}
+
+.navbar.shrink .nav-links a {
+    font-size: 18px;
+    margin: 0 10px;
+}
+
+.navbar.shrink .logo {
+    max-width: 20%;
+}
