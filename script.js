@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => { 
     console.log('DOM fully loaded and parsed');
 
     // Slideshow initialization
@@ -122,84 +122,6 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error('Navbar element not found');
     }
 
-    // Handle 'Reach Out to Us' button click
-    const reachOutBtn = document.querySelector('.contact-button');
-    const formContainer = document.getElementById('form-container'); // Ensure this matches the container in your HTML
-
-    if (reachOutBtn) {
-        reachOutBtn.addEventListener('click', () => {
-            window.scrollBy({
-                top: 500, 
-                behavior: 'smooth'
-            });
-
-            // Check if the form already exists
-            if (!document.querySelector('.form-section')) {
-                // Show the form container first
-                formContainer.style.display = 'block';
-
-                // Create the new section with form
-                const formSection = document.createElement('section');
-                formSection.classList.add('form-section');
-                
-                // Set initial opacity to 0 for smooth appearance
-                formSection.style.opacity = '0';
-                formSection.style.transition = 'opacity 0.5s ease-in-out';
-
-                // Adding the form structure
-                formSection.innerHTML = `
-                    <span>Submit a Ticket</span>
-                    <form>
-                        <label for="game-select">Select Game</label>
-                        <select id="game-select" name="game">
-                            <option value="" disabled selected>Select an option</option>
-                            <option value="game1">Card Memory Match</option>
-                            <option value="game2">Tic Tac Toe</option>
-                            <option value="game3">Rock Paper Scissors</option>
-                            <option value="game3">Wordle</option>
-                            <option value="game3">Typing Master</option>
-                        </select>
-                        
-                        <label for="category">Please select the issue that you are having</label>
-                        <select id="category" name="category">
-                            <option value="" disabled selected>Select an option</option>
-                            <option value="game1">Payment and billing</option>
-                            <option value="game2">Report inappropriate behaviour</option>
-                            <option value="game3">Related to my account</option>
-                            <option value="game3">Technical problems and bugs</option>
-                            <option value="game3">Questions about the game</option>
-                            <option value="game3">Other issues</option>
-                        </select>
-                        <small class="note">Please select an issue you are having. Selecting the correct topic allows us to help you faster.</small>
-                        
-                        <label for="email">Your email address</label>
-                        <input type="email" id="email" name="email" placeholder="Enter text here" required>
-                        
-                        <label for="subject">Subject</label>
-                        <input type="text" id="subject" name="subject" placeholder="Enter text here" maxlength="100" required>
-                        <small class="note">Please do not add more than 100 characters here.&nbsp;If you wish to share more information with us, please add it to the "Description" box below.</small>
-                        
-                        <label for="description">Description</label>
-                        <textarea id="description" name="description" placeholder="Enter text here" rows="10" required></textarea>
-                        <small class="note">Please enter the details of your request and make sure you include the email address associated with your game account.&nbsp;A member of our support staff will respond as soon as possible.</small>
-                        
-                        <button type="submit" class="form-submit-button">SUBMIT</button>
-                    </form>
-                `;
-
-                // Append the form section to the form container
-                formContainer.appendChild(formSection);
-
-                // Smooth appearance of the new section after appending
-                setTimeout(() => {
-                    formSection.style.opacity = '1'; // Reveal the form section
-                }, 10); // Delay for smooth transition
-            }
-        });
-    } else {
-        console.error('Reach Out button not found');
-    }
-
     // Check for valid email address
     document.querySelector('form').addEventListener('submit', (e) => {
         const email = document.getElementById('email').value;
@@ -209,6 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });    
 
+    
     // Smooth Scrolling
     document.querySelectorAll('.nav-links a').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
