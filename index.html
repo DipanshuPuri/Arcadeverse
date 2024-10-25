@@ -30,12 +30,13 @@
     <!-- Main Content -->
     <div class="slideshow-container">
         <div class="overlay"></div> <!-- Black overlay for fade effect -->
+        <div class="vignette"></div> 
         <div class="slideshow">
             <video id="slideshow-video" autoplay muted loop></video>
         </div>
         <div class="slideshow-text">
             <h2>Play our most popular games now!</h2>
-            <a href="games.html" class="slideshow-btn">Play Now</a>
+            <a href="games.html" class="slideshow-btn">PLAY NOW</a>
         </div>
         <div class="indicator-container">
             <div class="indicator"></div>
@@ -47,26 +48,28 @@
     <div class="blue-section">
         <div class="content-container">
             <div class="image-container">
-                <img src="images/minimallogo3.png" alt="ArcadeverseLogo">
+                <img class="fade-in-left" src="images/minimallogo3.png" alt="ArcadeverseLogo">
             </div>
-            <div class="text-container">
+            <div class="text-container fade-in-left">
                 <span>Welcome to Arcadeverse!</span>
                 <p>Arcadeverse is the ultimate online destination for retro-themed arcade games, offering a diverse selection of classic titles from our childhood. Whether you are looking to test your skills in a classic game of Tic-Tac-Toe, sharpen your Memory with a Card Mmatching Match, or challenge your typing speed with Typing Master, Arcadeverse provides an authentic nostalgic experience for everyone. <br> <br>Explore our diverse selection of games in the retro game haven!</p>
-                <button class="know-more-btn">KNOW MORE</button>
+                <a href="about.html">
+                    <button class="know-more-btn">KNOW MORE</button>
+                </a>
                 <p class="purpose">Our purpose...</p>
                 <p class="unleash">"to relive the past one more time”</p>
             </div>
         </div>
     </div>
     <div class="mostpopulargames">
-        <span>OUR MOST POPULAR GAMES</span>
+        <span class="fade-in-right">OUR MOST POPULAR GAMES</span>
     </div>
     <div>
         <div class="game-block container">
-            <aside class="game-image">
+            <aside class="game-image fade-in-left">
                 <img src="images/tictactoe7.png" alt="TicTacToe">
             </aside>
-            <div class="game-info">
+            <div class="game-info fade-in-left">
                 <span class="game-title">Tic Tac Toe: The Ultimate Showdown</span>
                 <p class="game-description">Get ready for a timeless classic that brings out the competitive spirit in everyone! Tic Tac Toe is the perfect quick and fun game to challenge your friends or test your own strategic skills.</p>
                 <a href="tictactoe/tictactoe-index.html">
@@ -75,22 +78,22 @@
             </div>    
         </div>
         <div class="game-block container">
-            <div class="game-info align-right">
+            <div class="game-info align-right fade-in-right">
                 <span class="game-title">Card Memory Match: Test Your Memory</span>
                 <p class="game-description">Put your memory to the test with this classic game! Flip the cards, find the pairs, and challenge your concentration. Perfect for a quick mental workout or fun competition with friends.</p>
                 <a href="cardmemorymatch/cardmemorymatch-index.html">
                     <button class="game-button">PLAY GAME</button>
                 </a>
             </div>    
-            <aside class="game-image">
+            <aside class="game-image fade-in-right">
                 <img src="images/cardmemorymatch4.jpg" alt="CardMemoryMatch">
             </aside>
         </div>
         <div class="game-block container">
-            <aside class="game-image">
+            <aside class="game-image fade-in-left">
                 <img src="images/typingmaster7.png" alt="TypingMaster">
             </aside>
-            <div class="game-info">
+            <div class="game-info fade-in-left">
                 <span class="game-title">Typing Master: Become a Typing Pro</span>
                 <p class="game-description">Challenge yourself with Typing Master! Improve your speed and accuracy as you race through exciting typing challenges. Perfect for a quick skill boost or fun competition with friends.</p>
                 <a href="typingmaster/typingmaster-index.html">
