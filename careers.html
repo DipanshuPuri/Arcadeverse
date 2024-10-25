@@ -40,7 +40,7 @@
     
     <div class="careers-text-section-container">
         <div class="careers-text-section">
-            <div class="careers-text-content">
+            <div class="careers-text-content fade-in-up">
                 <span class="careers-text-header">Work with us!</span>
                 <br><br>
                 <div class="careers-text">
@@ -54,7 +54,7 @@
         </div>
     </div>
     <div class="currentjobopenings">
-        <span>CURRENT JOB OPENINGS</span>
+        <span class="fade-in-left">CURRENT JOB OPENINGS</span>
     </div>
     
     <!-- Career Opportunities Filter Section -->
@@ -333,10 +333,10 @@
             jobListings.forEach(job => {
                 const jobLocation = job.getAttribute('data-location');
                 const jobDepartment = job.getAttribute('data-department');
-        
+
                 const locationMatch = selectedLocation === 'all' || jobLocation === selectedLocation;
                 const departmentMatch = selectedDepartment === 'all' || jobDepartment === selectedDepartment;
-        
+
                 if (locationMatch && departmentMatch) {
                     job.style.display = ''; 
                     foundJob = true; 
@@ -345,19 +345,45 @@
                 }
             });
 
-            if (foundJob) {
-                noResultsMessage.style.display = 'none'; 
-            } else {
-                noResultsMessage.style.display = 'block';
-            }
+            noResultsMessage.style.display = foundJob ? 'none' : 'block';
         }
-        
+
+        // Save the selected filters in sessionStorage
+        function saveFilters() {
+            sessionStorage.setItem('selectedLocation', locationSelect.value);
+            sessionStorage.setItem('selectedDepartment', departmentSelect.value);
+        }
+
+        // Load the filters from sessionStorage and apply them
+        function loadFilters() {
+            const savedLocation = sessionStorage.getItem('selectedLocation');
+            const savedDepartment = sessionStorage.getItem('selectedDepartment');
+
+            if (savedLocation) {
+                locationSelect.value = savedLocation;
+            }
+
+            if (savedDepartment) {
+                departmentSelect.value = savedDepartment;
+            }
+
+            filterJobs();
+        }
+
         // Event listeners for filters
-        locationSelect.addEventListener('change', filterJobs);
-        departmentSelect.addEventListener('change', filterJobs);
+        locationSelect.addEventListener('change', () => {
+            filterJobs();
+            saveFilters();
+        });
+        departmentSelect.addEventListener('change', () => {
+            filterJobs();
+            saveFilters();
+        });
+
+        // Load filters on page load
+        window.addEventListener('load', loadFilters);
+
         
-        // Initial filter application on page load
-        filterJobs();
     </script>
 </body>
 </html>
