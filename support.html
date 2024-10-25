@@ -40,7 +40,7 @@
 
     <div class="contact-section-container">
         <div class="contact-section">
-            <div class="contact-content">
+            <div class="contact-content fade-in-up">
                 <span class="contact-header">Contact Us</span>
                 <br><br><br>
                 <div class="contact-text">
@@ -51,7 +51,7 @@
                 <button class="contact-button">REACH OUT TO US</button>
             </div>
             <div class="contact-image">
-                <img src="images/contactus2.png" alt="Contact Us">
+                <img class="fade-in-right" src="images/contactus2.png" alt="Contact Us">
             </div>
         </div>
     </div>
@@ -91,5 +91,178 @@
     </footer>
 
     <script src="script.js"> </script>
+    <script>
+        // Reach Out button
+        // Reach Out button
+        const reachOutBtn = document.querySelector('.contact-button');
+        const formContainer = document.getElementById('form-container'); 
+
+        if (reachOutBtn) {
+            reachOutBtn.addEventListener('click', () => {
+                window.scrollBy({
+                    top: 500, 
+                    behavior: 'smooth'
+                });
+
+                // Check if the form already exists
+                if (!document.querySelector('.form-section')) {
+                    formContainer.style.display = 'block';
+
+                    // Create and append form section
+                    const formSection = document.createElement('section');
+                    formSection.classList.add('form-section');
+                    formSection.style.opacity = '0';
+                    formSection.style.transition = 'opacity 0.5s ease-in-out';
+
+                    // Add form structure
+                    formSection.innerHTML = `
+                        <span>Submit a Ticket</span>
+                        <form id="contact-form">
+                            <label for="game-select">Select Game</label>
+                            <select id="game-select" name="game">
+                                <option value="all" disabled selected>Select an option</option>
+                                <option value="game1">Card Memory Match</option>
+                                <option value="game2">Tic Tac Toe</option>
+                                <option value="game3">Rock Paper Scissors</option>
+                                <option value="game4">Wordle</option>
+                                <option value="game5">Typing Master</option>
+                            </select>
+                            
+                            <label for="category">Please select the issue that you are having</label>
+                            <select id="category" name="category">
+                                <option value="all" disabled selected>Select an option</option>
+                                <option value="payment">Payment and billing</option>
+                                <option value="behavior">Report inappropriate behavior</option>
+                                <option value="account">Related to my account</option>
+                                <option value="technical">Technical problems and bugs</option>
+                                <option value="questions">Questions about the game</option>
+                                <option value="other">Other issues</option>
+                            </select>
+
+                            <label for="email">Your email address</label>
+                            <input type="email" id="email" name="email" placeholder="Enter text here" required>
+                            
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" placeholder="Enter text here" maxlength="100" required>
+
+                            <label for="description">Description</label>
+                            <textarea id="description" name="description" placeholder="Enter text here" rows="10" required></textarea>
+
+                            <button type="submit" class="form-submit-button">SUBMIT</button>
+                        </form>
+                    `;
+
+                    // Append the form section to the container
+                    formContainer.appendChild(formSection);
+
+                    // Smooth appearance of the new section
+                    setTimeout(() => {
+                        formSection.style.opacity = '1'; 
+                    }, 10);
+
+                    // Now that the form is created, load the saved data from sessionStorage
+                    loadSavedFormData();
+
+                    // Add event listeners for saving input changes to sessionStorage
+                    addFormEventListeners();
+                }
+            });
+        }
+
+        // Save and load form data (sessionStorage logic)
+        function addFormEventListeners() {
+            const gameSelect = document.getElementById('game-select');
+            const categorySelect = document.getElementById('category');
+            const emailInput = document.getElementById('email');
+            const subjectInput = document.getElementById('subject');
+            const descriptionInput = document.getElementById('description');
+
+            if (gameSelect) {
+                gameSelect.addEventListener('change', () => {
+                    sessionStorage.setItem('selectedGame', gameSelect.value);
+                });
+            }
+
+            if (categorySelect) {
+                categorySelect.addEventListener('change', () => {
+                    sessionStorage.setItem('selectedCategory', categorySelect.value);
+                });
+            }
+
+            if (emailInput) {
+                emailInput.addEventListener('input', () => {
+                    sessionStorage.setItem('emailValue', emailInput.value);
+                });
+            }
+
+            if (subjectInput) {
+                subjectInput.addEventListener('input', () => {
+                    sessionStorage.setItem('subjectValue', subjectInput.value);
+                });
+            }
+
+            if (descriptionInput) {
+                descriptionInput.addEventListener('input', () => {
+                    sessionStorage.setItem('descriptionValue', descriptionInput.value);
+                });
+            }
+        }
+
+        // Function to load saved values from sessionStorage and apply them to the form
+        function loadSavedFormData() {
+            const savedGame = sessionStorage.getItem('selectedGame');
+            const savedCategory = sessionStorage.getItem('selectedCategory');
+            const savedEmail = sessionStorage.getItem('emailValue');
+            const savedSubject = sessionStorage.getItem('subjectValue');
+            const savedDescription = sessionStorage.getItem('descriptionValue');
+
+            const gameSelect = document.getElementById('game-select');
+            const categorySelect = document.getElementById('category');
+            const emailInput = document.getElementById('email');
+            const subjectInput = document.getElementById('subject');
+            const descriptionInput = document.getElementById('description');
+
+            if (savedGame && gameSelect) {
+                gameSelect.value = savedGame;
+            }
+
+            if (savedCategory && categorySelect) {
+                categorySelect.value = savedCategory;
+            }
+
+            if (savedEmail && emailInput) {
+                emailInput.value = savedEmail;
+            }
+
+            if (savedSubject && subjectInput) {
+                subjectInput.value = savedSubject;
+            }
+
+            if (savedDescription && descriptionInput) {
+                descriptionInput.value = savedDescription;
+            }
+        }
+
+        // Clear sessionStorage on form submit (optional)
+        document.addEventListener('submit', (e) => {
+            if (e.target && e.target.id === 'contact-form') {
+                sessionStorage.removeItem('selectedGame');
+                sessionStorage.removeItem('selectedCategory');
+                sessionStorage.removeItem('emailValue');
+                sessionStorage.removeItem('subjectValue');
+                sessionStorage.removeItem('descriptionValue');
+            }
+        });
+
+        // Clear sessionStorage only when the browser is closed using 'sendBeacon'
+        window.addEventListener('unload', () => {
+            // Detect if the window is being unloaded (likely browser close)
+            if (navigator.sendBeacon) {
+                navigator.sendBeacon('/clear-session');  // Can use a beacon call to your server to handle if needed
+            }
+            sessionStorage.clear(); // Clear the sessionStorage
+        });
+
+    </script>
 </body>
 </html>
