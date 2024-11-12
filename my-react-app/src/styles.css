@@ -1,0 +1,1358 @@
+html {
+    overflow: scroll;
+    overflow-x: hidden;
+}
+::-webkit-scrollbar {
+    width: 0;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+}
+/* Optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+    background: #cc3a2a;
+}
+
+/* General Styles */
+body {
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin: 0 auto;
+    background-color: #111111;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-x: hidden; /* Hide horizontal overflow */
+    overflow-y: auto; /* Allow vertical scrolling */
+    margin-top:100px;
+}
+
+.container {
+    margin: 0 auto;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container::-webkit-scrollbar { 
+    display: none;
+}
+
+/* Navigation Bar Styles */
+.navbar {
+    background-color: #07080a;
+    color: white;
+    padding: 20px 0 20px 0;
+    margin: 0;
+    position: fixed;
+    top: 0;
+    width:100%;
+    z-index: 1200;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Added shadow for better separation */
+}
+
+.logo {
+    max-width: 30%;
+    border: none !important;
+    outline: none !important;
+    padding: 0 !important;
+    margin-right: 20px; /* Only margin-right is set, check if this is necessary */
+    box-shadow: none !important;
+    border-image: none !important;
+    vertical-align: top;
+}
+
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar .site-name {
+    font-size: 36px;
+    font-weight: bolder;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.navbar .site-name span {
+    letter-spacing: 2.25px;
+}
+
+.navbar .logo-name-wrap {
+    display: flex;
+    align-items: center;
+    margin-left: 30px;
+}
+
+.navbar .subtitle {
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 10px;
+    margin-left: 0px;
+    letter-spacing: 3.25px;
+    font-weight: lighter;
+}
+
+.navbar .nav-links {
+    margin-bottom: 20px;
+    margin-right: 40px;
+}
+
+.navbar .nav-links a {
+    color: white;
+    text-decoration: none;
+    margin: 0 20px;
+    padding: 0px;
+    font-size: 20px;
+    transition: color 0.3s;
+}
+
+.navbar .nav-links a:hover {
+    color: #E0EAF5;
+}
+
+/* Smaller NavBar */
+
+.navbar, .navbar .site-name,.navbar .site-name .subtitle, .navbar .nav-links a, .navbar .logo {
+    transition: all 0.25s ease-in-out;
+}
+
+.navbar.shrink {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding: 22.5px 0;
+}
+
+.navbar.shrink .site-name {
+    font-size: 30px;
+}
+
+.navbar.shrink .site-name .subtitle {
+    font-size: 8px;
+}
+
+.navbar.shrink .nav-links {
+    margin-bottom: 10px;
+    margin-right: 40px;
+}
+
+.navbar.shrink .nav-links a {
+    font-size: 18px;
+    margin: 0 10px;
+}
+
+.navbar.shrink .logo {
+    max-width: 20%;
+}
+
+
+
+
+/* Slideshow Container */
+.slideshow-container {
+    position: relative;
+    max-width: 100%;
+    max-height: 100%;
+    margin: 0 auto;
+}
+
+.slideshow {
+    position: relative;
+    width: 1600px;
+    height: 633px;
+    overflow: hidden;
+}
+
+#slideshow-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.slideshow img {
+    width: 100%;
+    display: block;
+    transition: opacity 0.25s ease-in-out; /* Smooth transition for opacity */
+}
+
+.slideshow-text {
+    position: absolute;
+    top:76%;
+    left: 50%;
+    transform: translate(-50%, -20%);
+    text-align: center;
+    color: white;
+    z-index: 2;
+}
+
+.slideshow-text h2 {
+    font-size: 32px;
+    margin-bottom: 24px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7);
+    animation: fadeInUp 1s ease-in-out forwards; /* Smooth fade-in */
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.slideshow-text p {
+    font-size: 18px;
+    margin-bottom: 24px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.slideshow-btn {
+    padding: 10px 25px;
+    background-color: #cc3a2a;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in-out;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    border: none;
+    cursor: pointer;
+    letter-spacing: 0.75px;
+    font-weight: bolder;
+    animation: fadeIn 1s ease-in-out forwards; /* Smooth fade-in */
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.slideshow-btn:hover {
+    background-color: #b5280e;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black; /* Black background for fade effect */
+    opacity: 0;
+    transition: opacity 0.25s ease-in-out; /* Fade in/out effect for overlay */
+    z-index: 2; /* Ensure overlay is above the image */
+    pointer-events: none; /* Ensure overlay does not block interactions */
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent 40%);
+}
+
+.vignette {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent 25%);
+    z-index: 1; /* Ensure it's above the video but below the text */
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.fade-out {
+    animation: fadeOut 1s ease-in-out forwards; /* Smooth fade-out */
+}
+
+.fade-in {
+    animation: fadeIn 1s ease-in-out forwards; /* Smooth fade-in */
+}
+
+/* Indicator Styles */
+.indicator-container {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 20px;
+    z-index: 2;
+}
+
+/* Base Indicator Styles */
+.indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #fff; 
+    transition: background-color 0.3s, transform 0.3s, outline 0.3s;
+    border: 1px solid transparent; 
+    z-index: 2;
+}
+
+/* Active Indicator Styles */
+.indicator.active {
+    background-color: #111111;
+    transform: scale(1.2);
+    outline: 0.25px solid white;
+}
+
+
+/* Main Content Styles */
+.main-content {
+    gap: 20px;
+    padding: 40px 0;
+    flex: 1;
+}
+
+.slideshow img {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    overflow:hidden;
+    object-position: top;
+}
+
+.mostpopulargames {
+    background-color: #232323;
+    align-items: center;
+    margin:0 auto;
+    display: flex;
+    z-index: 900;
+    width:100%;
+    padding: 100px;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7)
+}
+
+.mostpopulargames span {
+    background-color: #B4280E;
+    font-size:42px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding: 10px 20% 10px 26%;
+    color: white;
+    font-weight: bold;
+    width: 100%;
+    display:flex;
+}
+
+.game-block {
+    background-color: #232323;
+    color: white;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s, transform 0.3s;
+    margin:0 0 0 0;
+}
+
+.game-block:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* animation: blink 1s; */
+}
+
+@keyframes blink {
+    50% { opacity: 0.7; }
+}
+
+.game-image img {
+    margin: 25px 30px;
+    width: 596px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 20px 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.game-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width:930px;
+}
+
+.game-title {
+    display: flex;
+    font-size: 32px;
+    font-weight: bolder;
+    margin: 25px 100px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7);
+}
+
+.game-description {
+    display: flex;
+    max-width: 100%;
+    font-size: 22px;
+    margin: 25px 100px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+
+/* Align the content to the right for the second game */
+.align-right {
+    align-items: flex-end; /* Align the title and description to the right */
+    text-align: right; /* Align the text content to the right */
+}
+
+.align-right .game-title, 
+.align-right .game-description {
+    margin: 25px 100px; /* Adjust margin to avoid pushing the content to the left */
+}
+
+/* Footer */
+footer {
+    background-color: #07080a;
+    color: #fff;
+    text-align: center;
+    padding: 40px 0;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-logo {
+    max-width: 150px;
+    margin-bottom: 50px;
+}
+
+.footer-links, .social-icons {
+    margin-bottom: 50px;
+}
+
+.footer-links a, .footer-bottom a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 16px;
+}
+
+.footer-links a:hover, .footer-bottom a:hover {
+    text-decoration: underline;
+}
+
+.social-icons a {
+    color: #fff;
+    margin: 0 10px;
+    font-size: 20px;
+}
+
+.social-icons img {
+    width: 42px;
+    height: 42px;
+}
+
+.footer-bottom p {
+    font-size: 12px;
+    margin-top: 20px;
+}
+
+/* Challenges Page Styles 
+
+.challenges {
+    padding: 40px 0;
+    color: white;
+}
+
+.challenge-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.challenge-item {
+    background-color: #232323;
+    padding: 20px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+}
+
+.challenge-item.complete {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.challenge-item.incomplete {
+    background-color: #B4280E;
+}
+
+.challenge-item .status {
+    font-weight: bold;
+}
+*/
+
+/* Blue section below slideshow */
+
+.blue-section {
+    background-color: #1b1c1b;
+    padding: 50px 0;
+}
+
+.content-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1368px;
+    margin: 0 auto;
+}
+
+.image-container img {
+    max-width: 100%;
+    height: auto;
+}
+
+.text-container {
+    text-align: right;
+    max-width: 600px;
+    color: white;
+    margin-left:50px;
+}
+
+.text-container span {
+    font-size: 42px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bolder;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7)
+}
+
+.text-container p {
+    font-size: 18px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.know-more-btn {
+    background-color: #cc3a2a;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+    letter-spacing: 0.75px;
+    font-weight: bolder;
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+.know-more-btn:hover {
+    background-color: #b5280e;
+}
+
+.purpose {
+    margin-right: 190px;
+}
+
+.unleash {
+    font-weight: bolder;
+    font-size: 24px;
+    margin-right: 100px;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7)
+}
+
+
+/* Support Page */
+
+.support-section {
+    background-color: #232323;
+    text-align: center;
+    color: white;
+    position: relative;
+    margin: 0;
+}
+
+.support-header h1 {
+    font-size: 96px;
+    padding: 100px 100px;
+    position: relative;
+    z-index: 5;
+    margin: 0;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7)
+}
+
+.support-header {
+    position: relative;
+    margin: 0;
+    z-index: 4;
+}
+
+.contact-section-container {
+    background: #232323;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    z-index: 1000;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.contact-content span {
+    font-size: 48px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bolder;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7)
+}
+
+.contact-content p {
+    font-size: 18px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: lighter;
+} 
+
+.contact-section {
+    background-color: #232323;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    text-align: left;
+    padding: 50px;
+}
+
+.contact-content {
+    padding: 50px 200px 50px 50px;
+}
+
+.contact-button {
+    background-color: #cc3a2a;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size:20px;
+    transition: background-color 0.3s ease;
+    margin:50px 0 20px 0;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    letter-spacing: 0.75px;
+    font-weight: bolder;
+}
+
+.contact-button:hover {
+    background-color: #b5280e;
+}
+
+/* On REACH OUT TO US button clcik */
+/* Form section container initially hidden */
+#form-container {
+    padding: 0 200px 50px 200px; 
+    display: flex;
+    align-items: center;
+    background-color: #232323;
+}
+
+/* Form Section */
+.form-section {
+    background-color: #232323;
+    padding: 0 20px 20px 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Form Elements */
+form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Form Field Background and Placeholder Styles */
+input, select, textarea {
+    width: 100%;
+    background-color: white;
+    color: black;
+    opacity: 0.9;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+input::placeholder, textarea::placeholder {
+    color: rgba(0, 0, 0, 0.5); /* Half-opacity placeholder */
+}
+
+/* Notes under the fields */
+form small.note {
+    color: white;
+    opacity: 0.7;
+    font-size: 14px;
+    text-align: left;
+    margin-top: -10px;
+}
+
+/* Submit Button */
+.form-submit-button {
+    background-color: #cc3a2a; /* Same as contact-button */
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    margin:50px auto;
+    cursor: pointer;
+    text-align: center;
+    font-size: 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in-out;
+    width: 18%;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    letter-spacing: 0.75px;
+    font-weight: bolder;
+}
+
+/* Submit Button Hover Effect */
+.form-submit-button:hover {
+    background-color: #b5280e; /* Darker shade of the button */
+}
+
+/* Adjust spacing between fields */
+label {
+    font-size:18px;
+    margin-bottom: 5px;
+    color: white;
+}
+
+.form-section span {
+    color: white;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 48px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bold;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7)
+}
+
+/* Media Queries */
+
+/* Navbar Styles for Small Screens */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px 0;
+    }
+    .navbar .site-name {
+        font-size: 28px;
+        margin-bottom: 10px;
+    }
+    .navbar .nav-links {
+        flex-direction: column;
+        margin-right: 0;
+    }
+    .navbar .nav-links a {
+        margin: 10px 0;
+        font-size: 18px;
+    }
+    .navbar .logo {
+        max-width: 40%;
+    }
+}
+
+/* Navbar Styles for Very Small Screens */
+@media (max-width: 480px) {
+    .navbar {
+        padding: 10px 0;
+    }
+    .navbar .container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .navbar .site-name,
+    .navbar .subtitle {
+        display: none;
+    }
+    .navbar .nav-links {
+        margin: 10px 0;
+        flex-direction: column;
+        align-items: center;
+    }
+    .navbar .nav-links a {
+        font-size: 16px;
+        margin: 5px 0;
+    }
+    .navbar .logo {
+        max-width: 40%;
+    }
+}
+
+/* Game Block Styles for Small Screens */
+@media (max-width: 768px) {
+    .game-block {
+        flex-direction: column;
+        align-items: center;
+        margin: 20px 0;
+    }
+    .game-image, .game-info {
+        width: 100%;
+        text-align: center;
+    }
+    .game-info {
+        align-items: center;
+    }
+}
+
+/* Blue Section Styles for Small Screens */
+@media (max-width: 768px) {
+    .blue-section .content-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .blue-section .text-container {
+        margin-left: 0;
+    }
+}
+
+/* Image Adjustments for Medium Screens */
+@media (min-width: 768px) and (max-width: 1280px) {
+    img {
+        width: 90%;
+        height: auto;
+    }
+}
+
+/* General Styles for Tablets (Landscape Mode) */
+@media (min-width: 1024px) and (max-width: 1280px) {
+    .navbar .nav-links a {
+        font-size: 20px;
+    }
+    .game-block {
+        margin: 30px 0;
+    }
+}
+
+/* Large Screen Adjustments */
+@media (min-width: 1281px) {
+    .navbar .nav-links a {
+        font-size: 22px;
+    }
+    .blue-section .content-container {
+        max-width: 90%;
+    }
+}
+
+/* About Page */
+
+.about-section {
+    background-color: #1b1c1b;
+    text-align: center;
+    color: white;
+    position: relative;
+    margin: 0;
+}
+
+.about-header h1 {
+    font-size: 96px;
+    padding: 100px 100px;
+    position: relative;
+    z-index: 5;
+    margin: 0;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7)
+}
+
+.about-header {
+    position: relative;
+    margin: 0; 
+    z-index: 4;
+}
+
+.about-text-section-container {
+    background: #1b1c1b;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    z-index: 1000;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.about-text-content span {
+    font-size: 48px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: lighter;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7)
+}
+
+.about-text-content p {
+    font-size: 20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: lighter;
+} 
+
+.about-text-section {
+    background-color: #1b1c1b;
+    color: white;
+    /* display: flex; */
+    justify-content: space-between;
+    width: 100%;
+    text-align: center;
+    padding: 50px;
+}
+
+/*.about-text-content {
+    padding: 50px 200px 50px 50px;
+} 
+*/
+
+.about-block {
+    background-color: #232323;
+    color: white;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s, transform 0.3s;
+    margin:0 0 0 0;
+}
+
+.about-block:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* animation: blink 1s; */
+}
+
+@keyframes blink {
+    50% { opacity: 0.7; }
+}
+
+.about-image img {
+    margin: 25px 25px;
+    width: 90%;
+    max-width: 768px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 20px 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.about-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width:930px;
+}
+
+.about-title {
+    display: flex;
+    font-size: 48px;
+    font-weight: bolder;
+    margin: 25px 100px 10px 100px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7);
+}
+
+.about-description {
+    display: flex;
+    max-width: 100%;
+    font-size: 20px;
+    margin: 25px 100px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+
+/* Align the content to the right for the second game */
+.align-right {
+    align-items: flex-end; /* Align the title and description to the right */
+    text-align: right; /* Align the text content to the right */
+}
+
+.align-right .about-title, 
+.align-right .about-description {
+    margin: 25px 100px; /* Adjust margin to avoid pushing the content to the left */
+}
+
+.about-button {
+    background-color: #cc3a2a;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size:20px;
+    transition: background-color 0.3s ease;
+    margin: 50px 100px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    letter-spacing: 0.75px;
+    font-weight: bolder;
+}
+
+.about-button:hover {
+    background-color: #b5280e;
+}
+
+/* Games Section */
+
+.games-section {
+    background-color: #1b1c1b;
+    text-align: center;
+    color: white;
+    position: relative;
+    margin: 0; 
+    z-index: 1;
+}
+
+.games-header h1 {
+    font-size: 96px;
+    padding: 100px 100px;
+    position: relative;
+    z-index: 2;
+    margin: 0;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7)
+}
+
+.games-header {
+    position: relative;
+    margin: 0;
+    z-index: 4;
+}
+
+.game-button {
+    background-color: #cc3a2a;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size:20px;
+    transition: background-color 0.3s ease;
+    margin: 50px 100px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    letter-spacing: 0.75px;
+    font-weight: bolder;
+}
+
+.game-button:hover {
+    background-color: #b5280e;
+}
+
+.background-video {
+    position: absolute; /* Fixed to cover the viewport */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    margin: 0 auto;
+    opacity: 0.9;
+    object-fit: cover; /* Ensure the video covers the area */
+    z-index: 3; /* Place behind all other content */
+}
+
+.games-section {
+    position: relative; /* Ensure content stays above the video */
+    z-index: -1; /* Stack content above the video */
+}
+
+@keyframes fadeInRight {
+    0% {
+            opacity: 0;
+            transform: translateX(20px);
+        }
+    100% {
+            opacity: 1;
+            transform: translateX(0);
+        }
+}  
+
+.fade-in-right {
+    animation: fadeInRight 2s ease-in-out forwards; /* Smooth fade-in from the right */
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadeInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-20px); /* Start 20px to the left */
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0); /* End at the original position */
+    }
+}
+
+.fade-in-left {
+    animation: fadeInLeft 2s ease-in-out forwards; /* Smooth fade-in from the left */
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+/*img {
+    animation: fadeInRight ease 2s;
+}*/
+
+@keyframes fadeInUp {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0%);
+        opacity: 1;
+    }
+}
+
+/*
+.header-section *:not(.background-video), 
+.about-section, 
+.games-section, 
+.support-section, 
+.footer-section {
+    animation: fadeInUp ease 2s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+} */
+
+/* Careers Page */
+
+.careers-section {
+    background-color: #1b1c1b;
+    text-align: center;
+    color: white;
+    position: relative;
+    margin: 0;
+}
+
+.careers-header h1 {
+    font-size: 96px;
+    padding: 100px 100px;
+    position: relative;
+    z-index: 5;
+    margin: 0;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7)
+}
+
+.careers-header {
+    position: relative;
+    margin: 0; 
+    z-index: 4;
+}
+
+.careers-text-section-container {
+    background: #1b1c1b;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    z-index: 1000;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.careers-text-content span {
+    font-size: 48px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: lighter;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7)
+}
+
+.careers-text-content p {
+    font-size: 20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: lighter;
+} 
+
+.careers-text-section {
+    background-color: #1b1c1b;
+    color: white;
+    /* display: flex; */
+    justify-content: space-between;
+    width: 100%;
+    text-align: center;
+    padding: 50px;
+}
+
+.careers-block {
+    background-color: #232323;
+    color: white;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s, transform 0.3s;
+    margin:0;
+    padding-bottom: 100px;
+}
+
+
+.job-listings-section {
+    background-color: #232323; 
+    border-radius: 8px; 
+    margin: 0 auto; 
+}
+
+.job-listing {
+    background-color: #3b3b3b;
+    margin: 20px auto;
+    width: 1080px;
+    padding: 20px 20px 25px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    display: flex;
+    flex-direction: column; 
+}
+
+.job-content {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    margin: 0 20px;
+}
+
+.job-listing:hover {
+    background-color: #4b4b4b; 
+}
+
+.job-listing h3, .job-listing p {
+    margin: 20px auto;
+    letter-spacing: 0.75px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.job-listing h3 {
+    font-size: 32px;
+    color: white;
+    font-weight: bolder;
+    letter-spacing: 0.75px;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7)
+}
+
+.job-listing p {
+    font-size: 20px;
+    color: #f75127;
+    letter-spacing: 1px;
+}
+
+.job-details {
+    font-size: 20px;
+    color: #f75127;
+}
+
+.currentjobopenings {
+    background-color: #232323;
+    align-items: center;
+    margin:0 auto;
+    display: flex;
+    z-index: 900;
+    width:100%;
+    padding: 100px;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7)
+}
+
+.currentjobopenings span {
+    background-color: #B4280E;
+    font-size:42px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding: 10px 20% 10px 26%;
+    color: white;
+    font-weight: bold;
+    width: 100%;
+    display:flex;
+}
+
+.apply-button {
+    background-color: #cc3a2a;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size:20px;
+    transition: background-color 0.3s ease;
+    margin: 20px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    align-self: flex-end;
+    letter-spacing: 0.75px;
+    font-weight: bolder;
+}
+
+.apply-button:hover {
+    background-color: #b5280e;
+}
+
+.career-filter-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    background-color: #232323;
+    border-radius: 5px;
+}
+
+.career-filter-section label {
+    font-size: 40px;
+    color: white;
+    font-weight: 500;
+}
+
+.career-filter-section select {
+    padding: 20px;
+    font-size: 20px;
+    border: 1px solid #444;
+    border-radius: 5px;
+    background-color: white;
+    color: #111111;
+    cursor: pointer;
+    transition: border-color 0.2s;
+    width: 500px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.career-filter-section select:focus {
+    outline: none;
+    border-color: #888;
+}
+
+.job-results {
+    padding: 20px;
+    background-color: #232323;
+    border-radius: 5px;
+    color: white;
+}
+
+.job-item {
+    padding: 10px 0;
+    border-bottom: 1px solid #444;
+}
+
+.job-item:last-child {
+    border-bottom: none;
+}
+
+.no-results-message {
+    display: none;
+    color: white;
+    padding: 100px;
+    margin-bottom: 200px;
+    background-color: #232323; 
+    border-radius: 5px;
+    text-align: center;
+    font-size: 32px; 
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(5px); /* Start 20px below */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0); /* End at original position */
+    }
+}
+
+.fade-in-up {
+    animation: fadeInUp 1s ease-in-out forwards; /* Smooth fade-in from below */
+}
