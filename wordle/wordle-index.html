@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Word Length Wordle Game</title>
+    <link rel="stylesheet" href="wordle.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container site-name">
+            <div class="logo-name-wrap">
+                <img class="logo" src="c:\Users\gaurika\Downloads\logo1.jpg" alt="logo">
+                <div class="site-name">
+                    ARCADEVERSE
+                    <div class="subtitle">THE RETRO GAME HAVEN</div>
+                </div>
+            </div>
+            <div class="nav-links">
+                <a href="#">Games</a>
+                <a href="#">Challenges</a>
+                <a href="#">Profile</a>
+                <a href="#">Instructions</a>
+                <a href="#">About</a>
+            </div>
+        </div>
+    </nav>
+    <div class="game-container">
+        <h1>Wordle Game</h1>
+        <div class="setup-container">
+            <label for="word-length">Choose word length:</label>
+            <input type="number" id="word-length" min="3" max="10" placeholder="Enter length (3-10)">
+            <button id="start-game">Start Game</button>
+        </div>
+        <div id="game-area" style="display: none;">
+            <div id="word-grid">
+                <!-- Each word grid row will be generated here -->
+            </div>
+            <div class="input-container">
+                <input type="text" id="guess-input" placeholder="Enter your guess">
+                <button id="submit-guess">Submit Guess</button>
+            </div>
+            <p id="message"></p>
+        </div>
+    </div>
+    <script src="wordle.js"></script>
+</body>
+</html>
